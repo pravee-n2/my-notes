@@ -10,7 +10,7 @@
     <link>https://quartz.jzhao.xyz/How-to-update-site-using-Quartz</link>
     <guid>https://quartz.jzhao.xyz/How-to-update-site-using-Quartz</guid>
     <description><![CDATA[ Whenever you want to update site: 1️⃣ Add / edit notes inside: quartz-site/content 2️⃣ Build site: npx quartz build --output docs 3️⃣ Push: git add . ]]></description>
-    <pubDate>Fri, 13 Feb 2026 04:18:28 GMT</pubDate>
+    <pubDate>Fri, 13 Feb 2026 04:19:21 GMT</pubDate>
   </item><item>
     <title>Praveen’s Knowledge Hub</title>
     <link>https://quartz.jzhao.xyz/</link>
