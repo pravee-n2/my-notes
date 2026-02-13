@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Quartz v4
 
 > “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
@@ -15,3 +16,6 @@ Quartz is a set of tools that helps you publish your [digital garden](https://jz
     <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
   </a>
 </p>
+=======
+# my-notes
+>>>>>>> 44aaf9f2d65be4c73b535c46edadc6e3ceb1683a
