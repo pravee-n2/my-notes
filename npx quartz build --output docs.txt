@@ -1,0 +1,4 @@
+npx quartz build --output docs
+git add .
+git commit -m "update site"
+git push

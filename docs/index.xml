@@ -6,17 +6,23 @@
       <description>Last 10 notes on Digital Garden</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>10 Commands to execute when files are updated in content folder</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/10-Commands-to-execute-when-files-are-updated-in-content-folder</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/10-Commands-to-execute-when-files-are-updated-in-content-folder</guid>
+    <description><![CDATA[ Whenever you update anything inside: quartz-site/content/ ✅ Standard Update Workflow (Every Time) 1️⃣ Build the site npx quartz build --output docs This converts your Markdown into the website inside /docs. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 05:16:13 GMT</pubDate>
+  </item><item>
     <title>12 Important - Folder Visibility in Quartz (index.md Rule)</title>
     <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/12-Important---Folder-Visibility-in-Quartz-(index.md-Rule)</link>
     <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/12-Important---Folder-Visibility-in-Quartz-(index.md-Rule)</guid>
     <description><![CDATA[ 🚨 Key Learning Quartz does NOT treat folders like Windows Explorer. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 05:08:03 GMT</pubDate>
+    <pubDate>Sat, 14 Feb 2026 05:16:13 GMT</pubDate>
   </item><item>
     <title>index</title>
     <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/</link>
     <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/</guid>
     <description><![CDATA[ GIT Setup for Obsidian All notes related to Git setup and Quartz publishing. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 05:03:45 GMT</pubDate>
+    <pubDate>Sat, 14 Feb 2026 05:16:13 GMT</pubDate>
   </item><item>
     <title>01 How to setup GIT in Desktop.</title>
     <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/01-How-to-setup-GIT-in-Desktop.</link>
@@ -58,12 +64,6 @@
     <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/07-Fixing-Obsidian-Git-Sync-Errors-(Merge-Conflicts,-Pull,-Push-Issues--and--Multi-Device-Setup-Guide)</link>
     <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/07-Fixing-Obsidian-Git-Sync-Errors-(Merge-Conflicts,-Pull,-Push-Issues--and--Multi-Device-Setup-Guide)</guid>
     <description><![CDATA[ If you use Obsidian with Git across multiple devices (home laptop, office laptop, mobile), you will eventually run into confusing errors like: “Conflicts detected” “Your local changes would be overwritten” “Updates were rejected (fetch first)” Files showing &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD and &gt;... ]]></description>
-    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
-  </item><item>
-    <title>08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)</guid>
-    <description><![CDATA[ This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages. ]]></description>
     <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
   </item>
     </channel>

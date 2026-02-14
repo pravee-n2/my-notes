@@ -1,5 +1,5 @@
 ---
-sort: alphabetical
+sort: title
 ---
 
 # GIT Setup for Obsidian
