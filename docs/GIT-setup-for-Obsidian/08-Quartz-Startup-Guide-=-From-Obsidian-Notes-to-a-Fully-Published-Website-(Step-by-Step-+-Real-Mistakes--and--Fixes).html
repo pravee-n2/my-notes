@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Digital Garden"/><meta property="og:title" content="08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)"/><meta name="twitter:description" content="This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages."/><meta property="og:description" content="This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages."/><meta property="og:image:alt" content="This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages."/><meta property="og:image" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta property="og:image:url" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta name="twitter:image" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="pravee-n2.github.io/my-notes"/><meta property="og:url" content="https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)"/><meta property="twitter:url" content="https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiRDpcXE9ic2lkaWFuIFZhdWx0c1xccXVhcnR6LXNpdGVcXHF1YXJ0elxcY29tcG9uZW50c1xcc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://pravee-n2.github.io/my-notes/index.xml"/></head><body data-slug="GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Digital Garden</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-9" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../GIT-setup-for-Obsidian/">GIT setup for Obsidian</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step by Step + Real Mistakes &amp; Fixes)</a></div></nav><h1 class="article-title">08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)</h1><p show-comma="true" class="content-meta"><time datetime="2026-02-14T03:39:18.258Z">Feb 14, 2026</time><span>5 min read</span></p></div></div><article class="popover-hint"><p>This is a <strong>complete beginner-to-advanced setup guide</strong> for turning your Obsidian notes into a public website using <strong>Quartz + GitHub Pages</strong>.</p>
+<p>This is not just a clean tutorial.<br/>
+This guide is based on a real setup journey — including:</p>
+<ul>
+<li>
+<p>Every step from zero → live website</p>
+</li>
+<li>
+<p>Commands used at each stage</p>
+</li>
+<li>
+<p>Errors that happened</p>
+</li>
+<li>
+<p>Wrong turns and confusion moments</p>
+</li>
+<li>
+<p>How each issue was diagnosed and fixed</p>
+</li>
+<li>
+<p>Final stable workflow</p>
+</li>
+</ul>
+<p>If you follow this guide patiently, you will end up with:</p>
+<ul>
+<li>
+<p>🌍 A fully online website</p>
+</li>
+<li>
+<p>📚 Selected notes published publicly</p>
+</li>
+<li>
+<p>🔎 Google-indexable pages</p>
+</li>
+<li>
+<p>🆓 Free hosting forever</p>
+</li>
+<li>
+<p>💻 Zero dependency on your system</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-what-we-are-building-big-picture">🧭 What We Are Building (Big Picture)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-what-we-are-building-big-picture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>We are creating an Obsidian-Publish alternative using this pipeline:</p>
+<pre><code>Obsidian Notes
+      ↓
+Git (version control)
+      ↓
+GitHub Repository
+      ↓
+Quartz (static site generator)
+      ↓
+GitHub Pages
+      ↓
+Public Website
+</code></pre>
+<p>This becomes your:</p>
+<ul>
+<li>
+<p>Knowledge base</p>
+</li>
+<li>
+<p>Study portal</p>
+</li>
+<li>
+<p>Blog</p>
+</li>
+<li>
+<p>Personal documentation site</p>
+</li>
+<li>
+<p>Long-term digital asset</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-step-1--create-a-github-repository">🪜 STEP 1 — Create a GitHub Repository<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-1--create-a-github-repository" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to GitHub and create a new repository.</p>
+<p>Example name:</p>
+<pre><code>my-notes
+</code></pre>
+<p>Recommended settings:</p>
+<ul>
+<li>
+<p>Public repository</p>
+</li>
+<li>
+<p>Can initialize with README (optional)</p>
+</li>
+</ul>
+<p>This repo will later host your website.</p>
+<hr/>
+<h1 id="-step-2--upload-your-obsidian-vault-to-github">🪜 STEP 2 — Upload Your Obsidian Vault to GitHub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-2--upload-your-obsidian-vault-to-github" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open Git Bash inside your vault folder and run:</p>
+<pre><code>git init
+git remote add origin https://github.com/username/my-notes.git
+git add .
+git commit -m &quot;first upload&quot;
+git push -u origin main
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>
+<p>Tracks your notes</p>
+</li>
+<li>
+<p>Uploads them to GitHub</p>
+</li>
+<li>
+<p>Creates version history</p>
+</li>
+</ul>
+<p>At this stage:<br/>
+Your notes exist online — but not yet as a website.</p>
+<hr/>
+<h1 id="-step-3--turn-the-repo-into-a-website-basic-test">🪜 STEP 3 — Turn the Repo Into a Website (Basic Test)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-3--turn-the-repo-into-a-website-basic-test" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to:</p>
+<pre><code>Repo → Settings → Pages
+</code></pre>
+<p>Set:</p>
+<pre><code>Source: Deploy from branch
+Branch: main
+Folder: /root
+</code></pre>
+<p>GitHub will give a link like:</p>
+<pre><code>https://username.github.io/my-notes/
+</code></pre>
+<p>This confirms:</p>
+<ul>
+<li>
+<p>GitHub Pages is working</p>
+</li>
+<li>
+<p>Hosting is active</p>
+</li>
+</ul>
+<p>BUT:<br/>
+It will only show files — not a real website.</p>
+<p>That’s where Quartz comes in.</p>
+<hr/>
+<h1 id="-step-4--install-quartz-website-engine">🪜 STEP 4 — Install Quartz (Website Engine)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-4--install-quartz-website-engine" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz converts markdown notes into a real website with:</p>
+<ul>
+<li>
+<p>Navigation</p>
+</li>
+<li>
+<p>Dark mode</p>
+</li>
+<li>
+<p>Backlinks</p>
+</li>
+<li>
+<p>Graph</p>
+</li>
+<li>
+<p>Search</p>
+</li>
+<li>
+<p>SEO structure</p>
+</li>
+</ul>
+<h3 id="first-attempt-common-beginner-error">First Attempt (Common Beginner Error)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#first-attempt-common-beginner-error" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Tried installing using:</p>
+<pre><code>git clone https://github.com/jackyzha0/quartz .
+</code></pre>
+<p>Error received:</p>
+<pre><code>fatal: destination path '.' already exists
+</code></pre>
+<p>Why?<br/>
+Because the vault folder already had files inside it.</p>
+<h3 id="fix">Fix<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fix" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Instead:</p>
+<ol>
+<li>
+<p>Download Quartz ZIP</p>
+</li>
+<li>
+<p>Extract it</p>
+</li>
+<li>
+<p>Copy files manually into the project folder</p>
+</li>
+</ol>
+<hr/>
+<h1 id="-step-5--another-mistake-wrong-folder-placement">🪜 STEP 5 — Another Mistake: Wrong Folder Placement<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-5--another-mistake-wrong-folder-placement" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz got extracted as:</p>
+<pre><code>Obsidian_Vault/quartz-4/
+</code></pre>
+<p>This is incorrect.</p>
+<p>Correct structure should be:</p>
+<pre><code>Obsidian_Vault/
+  notes...
+  quartz/
+  package.json
+  quartz.config.ts
+</code></pre>
+<p>Fix:<br/>
+Move all Quartz files to the root.</p>
+<hr/>
+<h1 id="-step-6--install-nodejs-required">🪜 STEP 6 — Install Node.js (Required)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-6--install-nodejs-required" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz requires Node.js.</p>
+<p>Install from official site.</p>
+<p>Then verify:</p>
+<pre><code>node -v
+npm -v
+</code></pre>
+<p>If both show version numbers → ready.</p>
+<hr/>
+<h1 id="-step-7--install-dependencies">🪜 STEP 7 — Install Dependencies<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-7--install-dependencies" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Inside the Quartz folder:</p>
+<pre><code>npm install
+npx quartz build
+</code></pre>
+<p>This creates:</p>
+<pre><code>public/
+</code></pre>
+<p>Important concept:<br/>
+<strong>public = the generated website</strong></p>
+<hr/>
+<h1 id="-step-8--major-structural-decision-very-important">🪜 STEP 8 — Major Structural Decision (Very Important)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-8--major-structural-decision-very-important" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>At first, Quartz was inside the main vault.</p>
+<p>Problem:</p>
+<ul>
+<li>
+<p>Obsidian started showing system files</p>
+</li>
+<li>
+<p>Vault looked cluttered</p>
+</li>
+<li>
+<p>Hard to manage</p>
+</li>
+</ul>
+<h3 id="better-architecture-recommended">Better Architecture (Recommended)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#better-architecture-recommended" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>Obsidian_Vault/   → private notes
+quartz-site/      → website engine
+</code></pre>
+<p>This keeps:</p>
+<ul>
+<li>
+<p>Writing clean</p>
+</li>
+<li>
+<p>Publishing controlled</p>
+</li>
+<li>
+<p>Structure professional</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-step-9--understanding-quartz-content-logic">🪜 STEP 9 — Understanding Quartz Content Logic<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-9--understanding-quartz-content-logic" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz publishes ONLY what is inside:</p>
+<pre><code>content/
+</code></pre>
+<p>Meaning:<br/>
+You control what goes public.</p>
+<p>Smart strategy:</p>
+<p>Private vault → everything<br/>
+content/ → selected polished notes</p>
+<hr/>
+<h1 id="-step-10--first-build-error">🪜 STEP 10 — First Build Error<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-10--first-build-error" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Mistake:<br/>
+Ran command inside wrong directory:</p>
+<pre><code>/quartz-site/content
+</code></pre>
+<p>Error:</p>
+<pre><code>ENOENT: package.json not found
+</code></pre>
+<p>Fix:<br/>
+Move one level up:</p>
+<pre><code>cd ..
+npx quartz build
+</code></pre>
+<p>Lesson:<br/>
+Always run Quartz commands where <code>package.json</code> exists.</p>
+<hr/>
+<h1 id="-step-11--preview-locally">🪜 STEP 11 — Preview Locally<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-11--preview-locally" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz v4 command:</p>
+<pre><code>npx quartz build --serve
+</code></pre>
+<p>Then open:</p>
+<pre><code>http://localhost:8080
+</code></pre>
+<p>At first → 404 page.</p>
+<hr/>
+<h1 id="-step-12--critical-rule-homepage-must-be-indexmd">🪜 STEP 12 — Critical Rule: Homepage Must Be index.md<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-12--critical-rule-homepage-must-be-indexmd" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz requires:</p>
+<pre><code>content/index.md
+</code></pre>
+<p>Without it:<br/>
+→ Site shows 404</p>
+<p>Fix:<br/>
+Create:</p>
+<pre><code>index.md
+</code></pre>
+<hr/>
+<h1 id="-step-13--windows-extension-trap">🪜 STEP 13 — Windows Extension Trap<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-13--windows-extension-trap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>File looked like:</p>
+<pre><code>index.md
+</code></pre>
+<p>But actually:</p>
+<pre><code>index.md.txt
+</code></pre>
+<p>Windows hides extensions.</p>
+<p>Fix:<br/>
+Enable “Show file extensions”<br/>
+Rename properly.</p>
+<hr/>
+<h1 id="-step-14--custom-page-title">🪜 STEP 14 — Custom Page Title<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-14--custom-page-title" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Add frontmatter at top:</p>
+<pre><code>---
+title: My Knowledge Hub
+---
+</code></pre>
+<p>This replaces the default “index” title.</p>
+<hr/>
+<h1 id="-step-15--push-website-to-github">🪜 STEP 15 — Push Website to GitHub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-15--push-website-to-github" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Inside quartz-site:</p>
+<pre><code>git init
+git add .
+git commit -m &quot;Initial website&quot;
+git branch -M main
+git remote add origin https://github.com/username/my-notes.git
+git push -u origin main
+</code></pre>
+<hr/>
+<h1 id="-step-16--merge-conflict-real-situation">🪜 STEP 16 — Merge Conflict (Real Situation)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-16--merge-conflict-real-situation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Error:</p>
+<pre><code>CONFLICT (add/add): README.md
+</code></pre>
+<p>Cause:<br/>
+Both local and GitHub had a README.</p>
+<p>Fix:</p>
+<pre><code>git add .
+git commit -m &quot;merge quartz site&quot;
+git push
+</code></pre>
+<hr/>
+<h1 id="-step-17--website-not-loading-final-configuration-issue">🪜 STEP 17 — Website Not Loading (Final Configuration Issue)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-17--website-not-loading-final-configuration-issue" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Problem:<br/>
+GitHub Pages was reading:</p>
+<pre><code>/root
+</code></pre>
+<p>But Quartz builds into:</p>
+<pre><code>/public
+</code></pre>
+<p>Fix:</p>
+<pre><code>Settings → Pages
+Branch: main
+Folder: /public
+</code></pre>
+<p>If /public not visible:</p>
+<pre><code>git add -f public
+git commit -m &quot;add public build&quot;
+git push
+</code></pre>
+<hr/>
+<h1 id="-final-result">🎉 FINAL RESULT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-final-result" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Your site goes live at:</p>
+<pre><code>https://username.github.io/my-notes/
+</code></pre>
+<p>Fully functional with:</p>
+<ul>
+<li>
+<p>Sidebar navigation</p>
+</li>
+<li>
+<p>Homepage</p>
+</li>
+<li>
+<p>Graph view</p>
+</li>
+<li>
+<p>Search</p>
+</li>
+<li>
+<p>Markdown rendering</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-is-the-site-searchable-on-google">🔎 Is the Site Searchable on Google?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-is-the-site-searchable-on-google" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Yes.</p>
+<p>But indexing takes time:</p>
+<p>Typical range:</p>
+<ul>
+<li>3 days → 3 weeks</li>
+</ul>
+<p>To speed up:<br/>
+Use Google Search Console.</p>
+<hr/>
+<h1 id="-is-it-system-dependent">💻 Is It System Dependent?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-is-it-system-dependent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>No.</p>
+<p>Once hosted on GitHub Pages:</p>
+<ul>
+<li>
+<p>Works 24×7</p>
+</li>
+<li>
+<p>Runs from GitHub servers</p>
+</li>
+<li>
+<p>Does NOT depend on your PC</p>
+</li>
+<li>
+<p>Remains online forever</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-daily-workflow-after-setup">🔁 Daily Workflow (After Setup)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-daily-workflow-after-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Whenever you want to publish a new note:</p>
+<ol>
+<li>Copy note into:</li>
+</ol>
+<pre><code>quartz-site/content
+</code></pre>
+<ol start="2">
+<li>Rebuild:</li>
+</ol>
+<pre><code>npx quartz build
+</code></pre>
+<ol start="3">
+<li>Push:</li>
+</ol>
+<pre><code>git add .
+git commit -m &quot;update content&quot;
+git push
+</code></pre>
+<p>Website updates automatically.</p>
+<hr/>
+<h1 id="-suggested-structure-for-growth--seo">🧠 Suggested Structure for Growth + SEO<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-suggested-structure-for-growth--seo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<pre><code>content/
+  index.md
+  CA/
+  Concepts/
+  Blog/
+  Resources/
+  About.md
+</code></pre>
+<p>This supports:</p>
+<ul>
+<li>
+<p>Knowledge hub</p>
+</li>
+<li>
+<p>Study notes</p>
+</li>
+<li>
+<p>Blog posts</p>
+</li>
+<li>
+<p>Personal brand</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-final-thoughts">🏁 Final Thoughts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-final-thoughts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>The setup journey involved:</p>
+<ul>
+<li>
+<p>Confusion</p>
+</li>
+<li>
+<p>Folder mistakes</p>
+</li>
+<li>
+<p>Command errors</p>
+</li>
+<li>
+<p>Merge conflicts</p>
+</li>
+<li>
+<p>Path errors</p>
+</li>
+<li>
+<p>Build issues</p>
+</li>
+</ul>
+<p>But every problem helped understand the system deeper.</p>
+<p>Quartz is powerful because:</p>
+<ul>
+<li>
+<p>Free</p>
+</li>
+<li>
+<p>Flexible</p>
+</li>
+<li>
+<p>Professional</p>
+</li>
+<li>
+<p>Scalable</p>
+</li>
+</ul>
+<p>Once configured, it becomes a lifetime publishing engine.</p>
+<p>And the best part?</p>
+<p>You now own your platform.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-7" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#-what-we-are-building-big-picture" data-for="-what-we-are-building-big-picture">🧭 What We Are Building (Big Picture)</a></li><li class="depth-0"><a href="#-step-1--create-a-github-repository" data-for="-step-1--create-a-github-repository">🪜 STEP 1 — Create a GitHub Repository</a></li><li class="depth-0"><a href="#-step-2--upload-your-obsidian-vault-to-github" data-for="-step-2--upload-your-obsidian-vault-to-github">🪜 STEP 2 — Upload Your Obsidian Vault to GitHub</a></li><li class="depth-0"><a href="#-step-3--turn-the-repo-into-a-website-basic-test" data-for="-step-3--turn-the-repo-into-a-website-basic-test">🪜 STEP 3 — Turn the Repo Into a Website (Basic Test)</a></li><li class="depth-0"><a href="#-step-4--install-quartz-website-engine" data-for="-step-4--install-quartz-website-engine">🪜 STEP 4 — Install Quartz (Website Engine)</a></li><li class="depth-2"><a href="#first-attempt-common-beginner-error" data-for="first-attempt-common-beginner-error">First Attempt (Common Beginner Error)</a></li><li class="depth-2"><a href="#fix" data-for="fix">Fix</a></li><li class="depth-0"><a href="#-step-5--another-mistake-wrong-folder-placement" data-for="-step-5--another-mistake-wrong-folder-placement">🪜 STEP 5 — Another Mistake: Wrong Folder Placement</a></li><li class="depth-0"><a href="#-step-6--install-nodejs-required" data-for="-step-6--install-nodejs-required">🪜 STEP 6 — Install Node.js (Required)</a></li><li class="depth-0"><a href="#-step-7--install-dependencies" data-for="-step-7--install-dependencies">🪜 STEP 7 — Install Dependencies</a></li><li class="depth-0"><a href="#-step-8--major-structural-decision-very-important" data-for="-step-8--major-structural-decision-very-important">🪜 STEP 8 — Major Structural Decision (Very Important)</a></li><li class="depth-2"><a href="#better-architecture-recommended" data-for="better-architecture-recommended">Better Architecture (Recommended)</a></li><li class="depth-0"><a href="#-step-9--understanding-quartz-content-logic" data-for="-step-9--understanding-quartz-content-logic">🪜 STEP 9 — Understanding Quartz Content Logic</a></li><li class="depth-0"><a href="#-step-10--first-build-error" data-for="-step-10--first-build-error">🪜 STEP 10 — First Build Error</a></li><li class="depth-0"><a href="#-step-11--preview-locally" data-for="-step-11--preview-locally">🪜 STEP 11 — Preview Locally</a></li><li class="depth-0"><a href="#-step-12--critical-rule-homepage-must-be-indexmd" data-for="-step-12--critical-rule-homepage-must-be-indexmd">🪜 STEP 12 — Critical Rule: Homepage Must Be index.md</a></li><li class="depth-0"><a href="#-step-13--windows-extension-trap" data-for="-step-13--windows-extension-trap">🪜 STEP 13 — Windows Extension Trap</a></li><li class="depth-0"><a href="#-step-14--custom-page-title" data-for="-step-14--custom-page-title">🪜 STEP 14 — Custom Page Title</a></li><li class="depth-0"><a href="#-step-15--push-website-to-github" data-for="-step-15--push-website-to-github">🪜 STEP 15 — Push Website to GitHub</a></li><li class="depth-0"><a href="#-step-16--merge-conflict-real-situation" data-for="-step-16--merge-conflict-real-situation">🪜 STEP 16 — Merge Conflict (Real Situation)</a></li><li class="depth-0"><a href="#-step-17--website-not-loading-final-configuration-issue" data-for="-step-17--website-not-loading-final-configuration-issue">🪜 STEP 17 — Website Not Loading (Final Configuration Issue)</a></li><li class="depth-0"><a href="#-final-result" data-for="-final-result">🎉 FINAL RESULT</a></li><li class="depth-0"><a href="#-is-the-site-searchable-on-google" data-for="-is-the-site-searchable-on-google">🔎 Is the Site Searchable on Google?</a></li><li class="depth-0"><a href="#-is-it-system-dependent" data-for="-is-it-system-dependent">💻 Is It System Dependent?</a></li><li class="depth-0"><a href="#-daily-workflow-after-setup" data-for="-daily-workflow-after-setup">🔁 Daily Workflow (After Setup)</a></li><li class="depth-0"><a href="#-suggested-structure-for-growth--seo" data-for="-suggested-structure-for-growth--seo">🧠 Suggested Structure for Growth + SEO</a></li><li class="depth-0"><a href="#-final-thoughts" data-for="-final-thoughts">🏁 Final Thoughts</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

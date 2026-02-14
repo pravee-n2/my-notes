@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>09 Quartz setup - Full Discussion</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Digital Garden"/><meta property="og:title" content="09 Quartz setup - Full Discussion"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="09 Quartz setup - Full Discussion"/><meta name="twitter:description" content="🧭 Overall Architecture Obsidian Notes (Markdown files) ↓ Git Commit + Push ↓ GitHub Repository ↓ GitHub Pages (auto builds site) ↓ Public website URL ↓ Google indexes it 🚀 Step-by-Step Setup (Best Method) 1️⃣ Create a GitHub Repository Go to: github.com Click New Repository Name it: my-notes Set: ..."/><meta property="og:description" content="🧭 Overall Architecture Obsidian Notes (Markdown files) ↓ Git Commit + Push ↓ GitHub Repository ↓ GitHub Pages (auto builds site) ↓ Public website URL ↓ Google indexes it 🚀 Step-by-Step Setup (Best Method) 1️⃣ Create a GitHub Repository Go to: github.com Click New Repository Name it: my-notes Set: ..."/><meta property="og:image:alt" content="🧭 Overall Architecture Obsidian Notes (Markdown files) ↓ Git Commit + Push ↓ GitHub Repository ↓ GitHub Pages (auto builds site) ↓ Public website URL ↓ Google indexes it 🚀 Step-by-Step Setup (Best Method) 1️⃣ Create a GitHub Repository Go to: github.com Click New Repository Name it: my-notes Set: ..."/><meta property="og:image" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta property="og:image:url" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta name="twitter:image" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="pravee-n2.github.io/my-notes"/><meta property="og:url" content="https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/09-Quartz-setup---Full-Discussion"/><meta property="twitter:url" content="https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/09-Quartz-setup---Full-Discussion"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="🧭 Overall Architecture Obsidian Notes (Markdown files) ↓ Git Commit + Push ↓ GitHub Repository ↓ GitHub Pages (auto builds site) ↓ Public website URL ↓ Google indexes it 🚀 Step-by-Step Setup (Best Method) 1️⃣ Create a GitHub Repository Go to: github.com Click New Repository Name it: my-notes Set: ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiRDpcXE9ic2lkaWFuIFZhdWx0c1xccXVhcnR6LXNpdGVcXHF1YXJ0elxcY29tcG9uZW50c1xcc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://pravee-n2.github.io/my-notes/index.xml"/></head><body data-slug="GIT-setup-for-Obsidian/09-Quartz-setup---Full-Discussion"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Digital Garden</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-10" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../GIT-setup-for-Obsidian/">GIT setup for Obsidian</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>09 Quartz setup   Full Discussion</a></div></nav><h1 class="article-title">09 Quartz setup - Full Discussion</h1><p show-comma="true" class="content-meta"><time datetime="2026-02-14T04:31:00.319Z">Feb 14, 2026</time><span>23 min read</span></p></div></div><article class="popover-hint"><h1 id="-overall-architecture">🧭 Overall Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-overall-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>Obsidian Notes (Markdown files)         ↓ Git Commit + Push         ↓ GitHub Repository         ↓ GitHub Pages (auto builds site)         ↓ Public website URL         ↓ Google indexes it</code></p>
+<hr/>
+<h1 id="-step-by-step-setup-best-method">🚀 Step-by-Step Setup (Best Method)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-by-step-setup-best-method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="1️⃣-create-a-github-repository">1️⃣ Create a GitHub Repository<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-create-a-github-repository" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p>Go to: <a href="https://github.com/" class="external">https://github.com<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p>Click <strong>New Repository</strong></p>
+</li>
+<li>
+<p>Name it:</p>
+</li>
+</ol>
+<p><code>my-notes</code></p>
+<ol start="4">
+<li>Set:</li>
+</ol>
+<ul>
+<li>
+<p>Public ✅</p>
+</li>
+<li>
+<p>Initialize with README ✅</p>
+</li>
+</ul>
+<hr/>
+<h2 id="2️⃣-connect-obsidian-vault-to-git">2️⃣ Connect Obsidian Vault to Git<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-connect-obsidian-vault-to-git" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>You already installed Git, so:</p>
+<p>Inside your vault folder:</p>
+<p><code>git init git remote add origin https://github.com/username/my-notes.git git add . git commit -m &quot;first upload&quot; git push -u origin main</code></p>
+<p>Now your notes are on GitHub.</p>
+<hr/>
+<h2 id="3️⃣-turn-it-into-a-website-github-pages">3️⃣ Turn It Into a Website (GitHub Pages)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3️⃣-turn-it-into-a-website-github-pages" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>This is the magic part.</p>
+<h3 id="go-to">Go to:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#go-to" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Repo → Settings → Pages</p>
+<p>Set:</p>
+<p><code>Source: Deploy from branch Branch: main Folder: /root</code></p>
+<p>You’ll get a link like:</p>
+<p><code>https://username.github.io/my-notes/</code></p>
+<p>That is your website 🎉</p>
+<hr/>
+<h1 id="-make-it-look-like-obsidian-publish">🧱 Make It Look Like Obsidian Publish<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-make-it-look-like-obsidian-publish" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Right now it will just show files.</p>
+<p>To make it look like a real website, use one of these:</p>
+<h3 id="-easiest-quartz-best-for-obsidian">⭐ EASIEST: Quartz (Best for Obsidian)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-easiest-quartz-best-for-obsidian" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>GitHub:</p>
+<p><code>https://github.com/jackyzha0/quartz</code></p>
+<p>It converts Obsidian notes into a beautiful website.</p>
+<p>Features:</p>
+<ul>
+<li>
+<p>Backlinks</p>
+</li>
+<li>
+<p>Graph view</p>
+</li>
+<li>
+<p>Search</p>
+</li>
+<li>
+<p>Dark theme</p>
+</li>
+<li>
+<p>Auto deploy via GitHub</p>
+</li>
+</ul>
+<p>Exactly like Obsidian Publish 😄</p>
+<hr/>
+<h1 id="-make-it-appear-in-google-search">🌍 Make It Appear in Google Search<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-make-it-appear-in-google-search" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>After your site is live:</p>
+<h3 id="1️⃣-wait">1️⃣ Wait<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-wait" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Google usually indexes in:</p>
+<p><code>3 days → 3 weeks</code></p>
+<h3 id="2️⃣-submit-manually-faster">2️⃣ Submit manually (faster)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-submit-manually-faster" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Go to:</p>
+<p><code>https://search.google.com/search-console</code></p>
+<p>Add your site:</p>
+<p><code>https://username.github.io/my-notes/</code></p>
+<p>Submit sitemap.</p>
+<hr/>
+<h1 id="-auto-sync-workflow-your-dream-setup">🔄 Auto-Sync Workflow (Your Dream Setup)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-auto-sync-workflow-your-dream-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Your current Git workflow already supports this:</p>
+<ol>
+<li>
+<p>Write notes in Obsidian</p>
+</li>
+<li>
+<p>Press:</p>
+</li>
+</ol>
+<p><code>Commit &amp; Sync</code></p>
+<ol start="3">
+<li>
+<p>GitHub updates</p>
+</li>
+<li>
+<p>Website updates automatically</p>
+</li>
+</ol>
+<hr/>
+<h1 id="install-quartz-obsidian-publish-alternative">Install Quartz (Obsidian Publish Alternative)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#install-quartz-obsidian-publish-alternative" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>This will give you:</p>
+<ul>
+<li>
+<p>Beautiful note pages</p>
+</li>
+<li>
+<p>Dark mode</p>
+</li>
+<li>
+<p>Backlinks</p>
+</li>
+<li>
+<p>Graph view</p>
+</li>
+<li>
+<p>Search</p>
+</li>
+<li>
+<p>Auto deploy when you push notes</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-do-this-exactly">🧭 Do This Exactly<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-do-this-exactly" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="step-1--download-quartz">Step 1 — Download Quartz<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1--download-quartz" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Open terminal inside your notes folder:</p>
+<p><code>cd path-to-your-vault</code></p>
+<p>Run:</p>
+<p><code>git clone https://github.com/jackyzha0/quartz .</code></p>
+<p>Yes, the dot is important.</p>
+<p>This will install Quartz INTO your current repo.</p>
+<hr/>
+<h2 id="step-2--install-nodejs-if-not-installed">Step 2 — Install Node.js (if not installed)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2--install-nodejs-if-not-installed" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Download:</p>
+<p><code>https://nodejs.org</code></p>
+<p>Install → restart PC.</p>
+<p>Then check:</p>
+<p><code>node -v</code></p>
+<hr/>
+<h2 id="step-3--setup-quartz">Step 3 — Setup Quartz<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3--setup-quartz" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Inside same folder:</p>
+<p><code>npm install npx quartz create</code></p>
+<p>Choose:</p>
+<p><code>content folder → your notes folder</code></p>
+<hr/>
+<h2 id="step-4--build-website">Step 4 — Build Website<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4--build-website" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><code>npx quartz build</code></p>
+<p>It will create a <code>public</code> folder.</p>
+<hr/>
+<h2 id="step-5--push-to-github">Step 5 — Push to GitHub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5--push-to-github" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><code>git add . git commit -m &quot;Added Quartz&quot; git push</code></p>
+<hr/>
+<h2 id="step-6--change-github-pages-source">Step 6 — Change GitHub Pages Source<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-6--change-github-pages-source" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Go to:</p>
+<p><code>Settings → Pages</code></p>
+<p>Change:</p>
+<p><code>Branch → main Folder → /public</code></p>
+<p>Save.</p>
+<hr/>
+<h1 id="error-encountered">Error encountered:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error-encountered" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/Obsidian_Vault (main) <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal">h</span><span class="mord mathnormal">ttp</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">//</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">u</span><span class="mord mathnormal">b</span><span class="mord">.</span><span class="mord mathnormal">co</span><span class="mord mathnormal">m</span><span class="mord">/</span><span class="mord mathnormal">ja</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.04398em;">yz</span><span class="mord mathnormal">ha</span><span class="mord">0/</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal">u</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">es</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ina</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord">.</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">re</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">ye</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mord mathnormal">an</span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">an</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">pt</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">rec</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">ory</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">Dr</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03148em;">nk</span><span class="mord mathnormal">u</span><span class="mord">@</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">ee</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">NG</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord">64/</span><span class="mord mathnormal">d</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">b</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">ianVa</span><span class="mord mathnormal">u</span><span class="mord mathnormal">lt</span><span class="mord mathnormal">s</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">b</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">ia</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">a</span><span class="mord mathnormal">u</span><span class="mord mathnormal">lt</span><span class="mopen">(</span><span class="mord mathnormal">main</span><span class="mclose">)</span></span></span></span></p>
+<p>This is expected. Nothing is wrong.</p>
+<p>The error happened because:</p>
+<ul>
+<li>
+<p>You already have:</p>
+<ul>
+<li>
+<p>Notes</p>
+</li>
+<li>
+<p>A git repo</p>
+</li>
+<li>
+<p>Files inside the folder</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Quartz tried to clone into an empty folder, but yours is not empty.</p>
+</li>
+</ul>
+<p>So we must use the <strong>correct method for existing repos</strong>.</p>
+<hr/>
+<h1 id="️-correct-way-to-add-quartz-to-existing-notes-repo">🛠️ Correct Way to Add Quartz to Existing Notes Repo<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-correct-way-to-add-quartz-to-existing-notes-repo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Do NOT use <code>git clone ... .</code> again.</p>
+<p>Instead, do this:</p>
+<h2 id="step-1--download-quartz-as-zip">Step 1 — Download Quartz as ZIP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1--download-quartz-as-zip" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>Open:</li>
+</ol>
+<p><code>https://github.com/jackyzha0/quartz</code></p>
+<ol start="2">
+<li>Click:</li>
+</ol>
+<p><code>Code → Download ZIP</code></p>
+<ol start="3">
+<li>Extract it.</li>
+</ol>
+<p>You’ll get a folder like:</p>
+<p><code>quartz-main</code></p>
+<hr/>
+<h2 id="step-2--copy-files">Step 2 — Copy Files<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2--copy-files" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Open the extracted folder.</p>
+<p>Copy EVERYTHING inside it:</p>
+<ul>
+<li>
+<p>package.json</p>
+</li>
+<li>
+<p>quartz folder</p>
+</li>
+<li>
+<p>quartz.config.ts</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+<p>Paste into:</p>
+<p><code>D:\Obsidian Vaults\Obsidian_Vault</code></p>
+<p>(Your vault root)</p>
+<p>When asked:</p>
+<p><code>Replace files?</code></p>
+<p>Click:</p>
+<p><code>YES</code></p>
+<p>This is safe.</p>
+<hr/>
+<h2 id="step-3--install-node-modules">Step 3 — Install Node Modules<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3--install-node-modules" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Open Git Bash again in vault folder and run:</p>
+<p><code>npm install</code></p>
+<p>Wait 1–2 minutes.</p>
+<hr/>
+<h2 id="step-4--build-site">Step 4 — Build Site<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4--build-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Run:</p>
+<p><code>npx quartz build</code></p>
+<p>This creates:</p>
+<p><code>/public</code></p>
+<p>This is your website.</p>
+<hr/>
+<h2 id="step-5--push-to-github-1">Step 5 — Push to GitHub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5--push-to-github-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><code>git add . git commit -m &quot;Installed Quartz&quot; git push</code></p>
+<hr/>
+<h2 id="step-6--final-github-pages-setting">Step 6 — Final GitHub Pages Setting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-6--final-github-pages-setting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Go to:</p>
+<p><code>Repo → Settings → Pages</code></p>
+<p>Change:</p>
+<p><code>Branch → main Folder → /public</code></p>
+<p>Click Save.</p>
+<hr/>
+<p><img src="../Pasted-image-20260214092327.png" width="auto" height="auto" alt/></p>
+<p>In this screenshot, there is a mistake:</p>
+<p><code>Obsidian_Vault  ├── 00 - Index  ├── 01 - Concepts  ├── ...  ├── quartz-4   ← ❌ WRONG PLACE</code></p>
+<p>I extracted Quartz as a <strong>separate folder</strong> inside the vault.</p>
+<p>But Quartz must be placed in the <strong>ROOT of the vault</strong>, not inside a subfolder.</p>
+<hr/>
+<h1 id="️-fix-2-minutes">🛠️ Fix (2 minutes)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-fix-2-minutes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h3 id="step-1--openquartz-4folder">Step 1 — Open <code>quartz-4</code> folder<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1--openquartz-4folder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Go inside:</p>
+<p><code>Obsidian_Vault/quartz-4</code></p>
+<p>You will see files like:</p>
+<p><code>package.json quartz.config.ts quartz/ public/ README.md</code></p>
+<hr/>
+<h3 id="step-2--move-everything-out">Step 2 — Move everything OUT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2--move-everything-out" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Select ALL files inside <code>quartz-4</code>:</p>
+<p><code>Ctrl + A Ctrl + X</code></p>
+<p>Now go back to:</p>
+<p><code>Obsidian_Vault</code></p>
+<p>Paste:</p>
+<p><code>Ctrl + V</code></p>
+<p>Now structure should look like:</p>
+<p><code>Obsidian_Vault  ├── 00 - Index  ├── 01 - Concepts  ├── quartz/  ├── package.json  ├── quartz.config.ts  ├── Things to Learn.md</code></p>
+<hr/>
+<h3 id="step-3--delete-empty-folder">Step 3 — Delete empty folder<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3--delete-empty-folder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Delete:</p>
+<p><code>quartz-4</code></p>
+<hr/>
+<h3 id="step-4--install-quartz">Step 4 — Install Quartz<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4--install-quartz" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Open Git Bash in:</p>
+<p><code>Obsidian_Vault</code></p>
+<p>Run:</p>
+<p><code>npm install</code></p>
+<p>(wait 1–2 mins)</p>
+<hr/>
+<h3 id="step-5--build-website">Step 5 — Build website<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5--build-website" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Run:</p>
+<p><code>npx quartz build</code></p>
+<p>This creates:</p>
+<p><code>/public</code></p>
+<hr/>
+<h3 id="step-6--push-to-github">Step 6 — Push to GitHub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-6--push-to-github" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>git add . git commit -m &quot;Quartz installed&quot; git push</code></p>
+<hr/>
+<h3 id="step-7--final-github-setting">Step 7 — Final GitHub Setting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-7--final-github-setting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Go to:</p>
+<p><code>GitHub → Settings → Pages</code></p>
+<p>Change:</p>
+<p><code>Folder → /public</code></p>
+<p>Save.</p>
+<hr/>
+<p><img src="../Pasted-image-20260214092436.png" width="auto" height="auto" alt/></p>
+<p>But look everything’s now inside obsidian too. Yes 👍 this is NORMAL. Nothing is broken.</p>
+<p>What you’re seeing is expected because:</p>
+<p>You pasted Quartz into the <strong>same vault</strong> that Obsidian opens.</p>
+<p>So now Obsidian is showing:</p>
+<ul>
+<li>
+<p>your notes ✅</p>
+</li>
+<li>
+<p>quartz folder ✅</p>
+</li>
+<li>
+<p>docs/content files ✅</p>
+</li>
+<li>
+<p>config files ✅</p>
+</li>
+</ul>
+<p>Obsidian simply shows every folder inside the vault.</p>
+<p>This does NOT affect your notes.</p>
+<hr/>
+<h1 id="-why-this-happened">🧠 Why this happened<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-why-this-happened" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz needs to live in the vault root:</p>
+<p><code>Obsidian_Vault/    00 - Index    01 - Concepts    quartz/    docs/    package.json    quartz.config.ts</code></p>
+<p>But Obsidian displays everything inside the vault.<br/>
+So you’re seeing Quartz system files too.</p>
+<p>They are harmless.</p>
+<hr/>
+<h1 id="-recommended-fix-best-long-term">🟢 Recommended Fix (Best Long-Term)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-recommended-fix-best-long-term" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ol>
+<li>Create a new folder:</li>
+</ol>
+<p><code>D:\Obsidian Vaults\quartz-site</code></p>
+<ol start="2">
+<li>Move these OUT of Obsidian_Vault into quartz-site:</li>
+</ol>
+<p><code>content docs quartz package.json package-lock.json quartz.config.ts</code></p>
+<ol start="3">
+<li>Keep ONLY notes inside Obsidian_Vault.</li>
+</ol>
+<hr/>
+<h1 id="why-this-is-better">Why this is better<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-is-better" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz will read notes from:</p>
+<p><code>../Obsidian_Vault</code></p>
+<p>So:</p>
+<ul>
+<li>
+<p>You write notes normally</p>
+</li>
+<li>
+<p>Quartz builds site separately</p>
+</li>
+<li>
+<p>Obsidian stays clean</p>
+</li>
+</ul>
+<p>This is how most people set it up.</p>
+<hr/>
+<h1 id="-final-clean-structure-what-were-creating">🧭 Final Clean Structure (What we’re creating)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-final-clean-structure-what-were-creating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>D:\Obsidian Vaults\    ├── Obsidian_Vault     ← ONLY your notes (Obsidian opens this)    └── quartz-site        ← Website generator (separate)</code></p>
+<p>Obsidian will become clean again.</p>
+<hr/>
+<h1 id="-step-1--create-new-folder">🧹 Step 1 — Create new folder<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-1--create-new-folder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>In Windows Explorer:</p>
+<p>Go to:</p>
+<p><code>D:\Obsidian Vaults\</code></p>
+<p>Create a new folder:</p>
+<p><code>quartz-site</code></p>
+<hr/>
+<h1 id="-step-2--move-quartz-files-out-of-vault">📦 Step 2 — Move Quartz files OUT of vault<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-2--move-quartz-files-out-of-vault" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>From inside:</p>
+<p><code>Obsidian_Vault</code></p>
+<p>Move these items to:</p>
+<p><code>quartz-site</code></p>
+<p>Move ONLY these:</p>
+<p><code>content docs quartz package.json package-lock.json quartz.config.ts public (if present)</code></p>
+<p>Do NOT move your note folders like:</p>
+<p><code>00 - Index 01 - Concepts 02 - Drivers ...</code></p>
+<p>Those must stay.</p>
+<hr/>
+<h1 id="-after-moving-it-should-look-like">📁 After moving, it should look like:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-after-moving-it-should-look-like" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h3 id="obsidian_vault-clean-again">Obsidian_Vault (clean again)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#obsidian_vault-clean-again" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>00 - Index 01 - Concepts 02 - Drivers ... Things to Learn.md</code></p>
+<h3 id="quartz-site">quartz-site<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quartz-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>content docs quartz package.json quartz.config.ts</code></p>
+<hr/>
+<h1 id="️-step-3--tell-quartz-where-your-notes-are">⚙️ Step 3 — Tell Quartz where your notes are<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-step-3--tell-quartz-where-your-notes-are" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Now Quartz must read notes from your vault.</p>
+<p>Open this file:</p>
+<p><code>quartz-site/quartz.config.ts</code></p>
+<p>Find a line like:</p>
+<p><code>contentDir: &quot;content&quot;,</code></p>
+<p>Change it to:</p>
+<p><code>contentDir: &quot;../Obsidian_Vault&quot;,</code></p>
+<p>Save.</p>
+<hr/>
+<h1 id="-step-4--install--build-inside-quartz-site">📦 Step 4 — Install &amp; Build (inside quartz-site)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-4--install--build-inside-quartz-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open Git Bash in:</p>
+<p><code>D:\Obsidian Vaults\quartz-site</code></p>
+<p>Run:</p>
+<p><code>npm install npx quartz build</code></p>
+<p>This will generate:</p>
+<p><code>public/</code></p>
+<hr/>
+<p><img src="../Pasted-image-20260214092714.png" width="auto" height="auto" alt/></p>
+<p>Perfect 👍<br/>
+You did it correctly. That screenshot looks EXACTLY right.</p>
+<p>Your structure now is clean:</p>
+<p><code>D:\Obsidian Vaults\    ├── Obsidian_Vault   ← your notes (Obsidian opens this)    └── quartz-site      ← website engine (correct)</code></p>
+<p>And inside <code>quartz-site</code> I can see:</p>
+<ul>
+<li>
+<p>.github</p>
+</li>
+<li>
+<p>content</p>
+</li>
+<li>
+<p>docs</p>
+</li>
+<li>
+<p>quartz</p>
+</li>
+<li>
+<p>package.json</p>
+</li>
+<li>
+<p>quartz.config</p>
+</li>
+<li>
+<p>etc</p>
+</li>
+</ul>
+<p>This is the proper Quartz installation 👍</p>
+<hr/>
+<h1 id="-one-important-change-needed">🔴 One IMPORTANT change needed<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-one-important-change-needed" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Right now Quartz is still looking at:</p>
+<p><code>content/</code></p>
+<p>But your real notes are in:</p>
+<p><code>../Obsidian_Vault</code></p>
+<p>We must connect Quartz to your vault.</p>
+<hr/>
+<h1 id="️-do-this-simple--safe">🛠️ Do This (Simple &amp; Safe)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-do-this-simple--safe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="step-1--open">Step 1 — Open:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1--open" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><code>D:\Obsidian Vaults\quartz-site\content</code></p>
+<p>Delete everything inside <code>content</code><br/>
+(only demo files — safe to delete)</p>
+<hr/>
+<h2 id="step-2--copy-your-notes-into-content">Step 2 — Copy your notes INTO content<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2--copy-your-notes-into-content" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Copy these folders from:</p>
+<p><code>Obsidian_Vault</code></p>
+<p>Into:</p>
+<p><code>quartz-site/content</code></p>
+<p>Copy:</p>
+<p><code>00 - Index 01 - Concepts 02 - Drivers 03 - Templates 04 - Case Studies 05 - Mistakes 06 - Doubts 07 - Resources 08 - Attachments 09 - Interview Career Things to Learn.md</code></p>
+<p>Do NOT copy:</p>
+<p><code>.obsidian</code></p>
+<hr/>
+<h1 id="after-copying-it-should-look-like">After copying, it should look like:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-copying-it-should-look-like" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>quartz-site/    content/       00 - Index       01 - Concepts       02 - Drivers       ...</code></p>
+<hr/>
+<h1 id="-step-3--install--build">📦 Step 3 — Install + Build<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-3--install--build" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open Git Bash in:</p>
+<p><code>D:\Obsidian Vaults\quartz-site</code></p>
+<p>Run:</p>
+<p><code>npm install npx quartz build</code></p>
+<p>Wait 30–60 seconds.</p>
+<p>You should now see:</p>
+<p><code>public/</code></p>
+<hr/>
+<h1 id="-step-4--preview-locally">🌍 Step 4 — Preview locally<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-4--preview-locally" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Run:</p>
+<p><code>npx quartz serve</code></p>
+<p>Then open:</p>
+<p><code>http://localhost:8080</code></p>
+<p>You’ll see your Obsidian notes as a website 😄</p>
+<hr/>
+<p>Its actually the BEST way to use Quartz.</p>
+<p>And yes, you are 100% correct:</p>
+<blockquote>
+<p>Only the files inside the <code>content/</code> folder will be published to the website.</p>
+</blockquote>
+<p>Nothing outside <code>content/</code> will appear on your site.</p>
+<hr/>
+<h1 id="-what-this-means-important">🧠 What this means (important)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-what-this-means-important" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Your setup now works like this:</p>
+<p><code>Obsidian_Vault        → Your full private notes quartz-site/content   → Only selected notes for public website</code></p>
+<p>So you get full control.</p>
+<p>You can:</p>
+<ul>
+<li>
+<p>Keep personal notes private</p>
+</li>
+<li>
+<p>Publish only study notes</p>
+</li>
+<li>
+<p>Publish only selected topics</p>
+</li>
+<li>
+<p>Slowly add content over time</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-recommended-workflow-very-smart-approach">🟢 Recommended workflow (very smart approach)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-recommended-workflow-very-smart-approach" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Instead of copying everything, do this:</p>
+<ol>
+<li>Keep your main vault untouched:</li>
+</ol>
+<p><code>Obsidian_Vault/</code></p>
+<ol start="2">
+<li>Inside:</li>
+</ol>
+<p><code>quartz-site/content/</code></p>
+<p>Manually copy ONLY what you want public.</p>
+<p>Example:</p>
+<p><code>content/    Taxation/    GST/    DT/    Audit/    Index.md</code></p>
+<p>This becomes your public knowledge website.</p>
+<hr/>
+<h1 id="-pro-tip-used-by-many-people">🔥 Pro tip (used by many people)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-pro-tip-used-by-many-people" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You can treat <code>content/</code> like:</p>
+<ul>
+<li>
+<p>A “public notes” folder</p>
+</li>
+<li>
+<p>A “blog”</p>
+</li>
+<li>
+<p>A “study portal”</p>
+</li>
+</ul>
+<p>Whenever a note is polished and clean:</p>
+<p>→ Copy it to <code>content/</code></p>
+<hr/>
+<h1 id="-example-strategy-perfect-for-ca-prep">🧾 Example strategy (perfect for CA prep)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-example-strategy-perfect-for-ca-prep" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Keep private:</p>
+<p><code>Mistakes Rough notes Interview prep Personal thoughts</code></p>
+<p>Publish:</p>
+<p><code>Concept notes Summaries Revision sheets Frameworks</code></p>
+<hr/>
+<h1 id="-next-step">📦 Next step<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-next-step" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>After you add at least ONE note into:</p>
+<p><code>content/</code></p>
+<p>Run:</p>
+<p><code>npm install npx quartz build npx quartz serve</code></p>
+<p>Then open:</p>
+<p><code>http://localhost:8080</code></p>
+<p>You’ll see your note as a website.</p>
+<hr/>
+<h1 id="-where-to-run-the-commands">📍 Where to run the commands<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-where-to-run-the-commands" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to this folder in File Explorer:</p>
+<p><code>D:\Obsidian Vaults\quartz-site</code></p>
+<p>Then:</p>
+<h3 id="method-1-easiest">Method 1 (easiest)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method-1-easiest" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>Right-click inside the folder (empty space)</p>
+</li>
+<li>
+<p>Click <strong>“Git Bash Here”</strong></p>
+</li>
+</ul>
+<p>A black terminal window will open.</p>
+<p>You should see something like:</p>
+<p><code>Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/quartz-site $</code></p>
+<p>That means you’re in the correct place ✅</p>
+<hr/>
+<h1 id="-now-run-the-commands-there">📦 Now run the commands there<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-now-run-the-commands-there" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Type one by one:</p>
+<p><code>npm install</code></p>
+<p>(wait till it finishes)</p>
+<p>Then:</p>
+<p><code>npx quartz build</code></p>
+<p>Then to preview:</p>
+<p><code>npx quartz serve</code></p>
+<hr/>
+<h1 id="-open-the-site">🌐 Open the site<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-open-the-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>After running <code>serve</code>, open in browser:</p>
+<p><code>http://localhost:8080</code></p>
+<p>You’ll see your notes as a website.</p>
+<hr/>
+<h1 id="important-note">Important note<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#important-note" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You only need to run <code>npm install</code> ONE time (first setup).</p>
+<p>After that, daily usage is just:</p>
+<p><code>npx quartz build</code></p>
+<p>or</p>
+<p><code>npx quartz serve</code></p>
+<hr/>
+<h1 id="error">Error<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Look at your terminal path:</p>
+<p><code>/d/Obsidian Vaults/quartz-site/content</code></p>
+<p>You are running the command INSIDE the <code>content</code> folder ❌</p>
+<p>But Quartz commands must be run from:</p>
+<p><code>/d/Obsidian Vaults/quartz-site</code></p>
+<p>Because <code>package.json</code> is there, not inside <code>content</code>.</p>
+<p>That’s why it says:</p>
+<p><code>ENOENT: no such file or directory, open ...content/package.json</code></p>
+<hr/>
+<h1 id="-fix-10-seconds">✅ Fix (10 seconds)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-fix-10-seconds" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>In the same Git Bash window, just go one level up.</p>
+<p>Type:</p>
+<p><code>cd ..</code></p>
+<p>Now your path should become:</p>
+<p><code>Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/quartz-site $</code></p>
+<p>This is the correct place.</p>
+<hr/>
+<p>Now run again:</p>
+<p><code>npm install</code></p>
+<p>(wait till it finishes)</p>
+<p>Then:</p>
+<p><code>npx quartz build</code></p>
+<p>Then preview:</p>
+<p><code>npx quartz serve</code></p>
+<p>Open:</p>
+<p><code>http://localhost:8080</code></p>
+<hr/>
+<p>Easy way to remember:</p>
+<p>Run Quartz commands ONLY where this file exists:</p>
+<p><code>package.json</code></p>
+<p>That folder is:</p>
+<p><code>quartz-site</code></p>
+<p>NOT:</p>
+<p><code>quartz-site/content</code></p>
+<h3 id="next-step-preview-the-site">Next step: Preview the site<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#next-step-preview-the-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>In the SAME folder (<code>quartz-site</code>) run:</p>
+<p><code>npx quartz serve</code></p>
+<p>You should see something like:</p>
+<p><code>Server running at http://localhost:8080</code></p>
+<p>Open browser and go to:</p>
+<p><code>http://localhost:8080</code></p>
+<p>You’ll see your website.</p>
+<hr/>
+<h1 id="if-the-page-looks-empty">If the page looks empty<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#if-the-page-looks-empty" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>That just means:</p>
+<p>You haven’t added notes yet to:</p>
+<p><code>quartz-site/content</code></p>
+<p>So Quartz has nothing to show.</p>
+<p>Just copy 1 note into <code>content</code> to test.</p>
+<p>Example:</p>
+<p>Copy:</p>
+<p><code>Things to Learn.md</code></p>
+<p>Into:</p>
+<p><code>quartz-site/content</code></p>
+<p>Then run again:</p>
+<p><code>npx quartz build npx quartz serve</code></p>
+<p>Now it will appear.</p>
+<hr/>
+<h1 id="-correct-command-to-preview-site-quartz-v4">✅ Correct command to preview site (Quartz v4)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-correct-command-to-preview-site-quartz-v4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Run this instead:</p>
+<p><code>npx quartz build --serve</code></p>
+<p>This does BOTH:</p>
+<ul>
+<li>
+<p>builds the site</p>
+</li>
+<li>
+<p>starts local server</p>
+</li>
+</ul>
+<hr/>
+<h1 id="what-you-should-see-after-running">What you should see after running<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-you-should-see-after-running" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Terminal will show something like:</p>
+<p><code>Quartz v4.x.x Local server started at http://localhost:8080</code></p>
+<p>Now open browser and go to:</p>
+<p><code>http://localhost:8080</code></p>
+<hr/>
+<h1 id="if-page-looks-empty">If page looks empty<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#if-page-looks-empty" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>That means <code>content/</code> has no notes yet.</p>
+<p>So copy 1 test note:</p>
+<p>Example:</p>
+<p>Copy this file from your vault:</p>
+<p><code>Things to Learn.md</code></p>
+<p>Paste into:</p>
+<p><code>quartz-site/content/</code></p>
+<p>Then run again:</p>
+<p><code>npx quartz build --serve</code></p>
+<p>Now you’ll see that note as a webpage.</p>
+<hr/>
+<p><img src="../Pasted-image-20260214094052.png" width="auto" height="auto" alt/></p>
+<p>That 404 page means:</p>
+<blockquote>
+<p>Quartz is running correctly, but there are NO notes inside <code>content/</code> yet.</p>
+</blockquote>
+<p>So it has nothing to show.</p>
+<hr/>
+<h1 id="why-youre-seeing-404">Why you’re seeing 404<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-youre-seeing-404" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz only shows pages that exist inside:</p>
+<p><code>quartz-site/content/</code></p>
+<p>Right now that folder is probably:</p>
+<ul>
+<li>
+<p>empty<br/>
+or</p>
+</li>
+<li>
+<p>has no <code>.md</code> files</p>
+</li>
+</ul>
+<p>So homepage = not found.</p>
+<hr/>
+<h1 id="important-concept-key-understanding">Important concept (key understanding)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#important-concept-key-understanding" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz works like this:</p>
+<p><code>content/    index.md        ← homepage    gst.md    tax.md</code></p>
+<p>If there is NO <code>index.md</code>, it shows 404.</p>
+<hr/>
+<h1 id="best-first-test-recommended">Best first test (recommended)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#best-first-test-recommended" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Inside <code>content</code>, create a file:</p>
+<p><code>index.md</code></p>
+<p>Put this inside:</p>
+<p><code># Welcome  This is my knowledge base.</code></p>
+<p>Save.</p>
+<p>Run again:</p>
+<p><code>npx quartz build --serve</code></p>
+<p>Now homepage will open 😄</p>
+<hr/>
+<h1 id="how-your-future-workflow-will-look">How your future workflow will look<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-your-future-workflow-will-look" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You will:</p>
+<ol>
+<li>
+<p>Write notes in Obsidian (private vault)</p>
+</li>
+<li>
+<p>Copy selected notes into:</p>
+</li>
+</ol>
+<p><code>quartz-site/content/</code></p>
+<ol start="3">
+<li>Run:</li>
+</ol>
+<p><code>npx quartz build</code></p>
+<ol start="4">
+<li>
+<p>Push to GitHub</p>
+</li>
+<li>
+<p>Site updates publicly</p>
+</li>
+</ol>
+<hr/>
+<p><img src="../Pasted-image-20260214094144.png" width="auto" height="auto" alt/></p>
+<p>You DO have a note inside <code>content</code>, but Quartz still shows 404 because:</p>
+<p>👉 The homepage must be named exactly:</p>
+<p><code>index.md</code></p>
+<p>Right now you have:</p>
+<p><code>Things to Learn.md</code></p>
+<p>Quartz doesn’t treat that as the homepage.</p>
+<hr/>
+<h1 id="-fix-10-seconds-1">🎯 Fix (10 seconds)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-fix-10-seconds-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Just rename this file:</p>
+<p><code>Things to Learn.md</code></p>
+<p>to:</p>
+<p><code>index.md</code></p>
+<p>So the folder becomes:</p>
+<p><code>content/    index.md</code></p>
+<hr/>
+<h1 id="then-rebuild">Then rebuild<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#then-rebuild" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>In Git Bash (inside quartz-site):</p>
+<p><code>npx quartz build --serve</code></p>
+<p>Now refresh:</p>
+<p><code>http://localhost:8080</code></p>
+<p>It will open 😄</p>
+<hr/>
+<h1 id="why-this-happens">Why this happens<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-happens" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz works like websites:</p>
+<p><code>index.md = homepage</code></p>
+<p>Same as:</p>
+<p><code>index.html</code></p>
+<p>Without it → 404</p>
+<hr/>
+<h1 id="later-you-can-add-more-notes-like">Later you can add more notes like:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#later-you-can-add-more-notes-like" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>content/    index.md    gst.md    dt.md    audit.md</code></p>
+<p>They will appear automatically.</p>
+<hr/>
+<p><img src="../Pasted-image-20260214094248.png" width="auto" height="auto" alt/></p>
+<p>You’re VERY close. The problem is small and I can spot it from your screenshot.</p>
+<p>You renamed the file visually, but Quartz still isn’t detecting a homepage because one of these is happening:</p>
+<h3 id="most-likely-causes-one-of-these-100-is-true">Most likely causes (one of these 100% is true)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#most-likely-causes-one-of-these-100-is-true" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>The file is actually named:</li>
+</ol>
+<p><code>index.md.md</code></p>
+<ol start="2">
+<li>The file is:</li>
+</ol>
+<p><code>index.MD</code></p>
+<ol start="3">
+<li>Windows is hiding extensions, so it looks like <code>index.md</code> but isn’t.</li>
+</ol>
+<hr/>
+<h1 id="-lets-verify-properly">🔍 Let’s verify properly<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-lets-verify-properly" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to:</p>
+<p><code>quartz-site/content</code></p>
+<p>Turn ON file extensions:</p>
+<p>Top menu → View → ✔ File name extensions</p>
+<p>Now check the exact name.</p>
+<p>It MUST be:</p>
+<p><code>index.md</code></p>
+<p>Nothing else.</p>
+<hr/>
+<h1 id="fix-safe-method">Fix (safe method)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fix-safe-method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Delete current file.</p>
+<p>Create a fresh one:</p>
+<p>Right-click → New → Text Document</p>
+<p>Rename it to:</p>
+<p><code>index.md</code></p>
+<p>Open it and paste:</p>
+<p><code># Welcome  This is my public knowledge base.</code></p>
+<p>Save.</p>
+<hr/>
+<h1 id="rebuild">Rebuild<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rebuild" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>In Git Bash:</p>
+<p><code>npx quartz build --serve</code></p>
+<p>Refresh:</p>
+<p><code>http://localhost:8080</code></p>
+<hr/>
+<h1 id="before-we-publish--important-decision">Before we publish — important decision<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#before-we-publish--important-decision" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Your current structure is PERFECT:</p>
+<p><code>Obsidian_Vault        → Private notes quartz-site/content   → Public notes</code></p>
+<p>So you can now:</p>
+<ul>
+<li>
+<p>Copy only selected notes into <code>content</code></p>
+</li>
+<li>
+<p>Keep rest private</p>
+</li>
+<li>
+<p>Publish only polished content</p>
+</li>
+</ul>
+<p>This is the ideal system.</p>
+<hr/>
+<p><img src="../Pasted-image-20260214094431.png" width="auto" height="auto" alt/></p>
+<p>But the title index is also showing</p>
+<p>Good catch 👀<br/>
+That “index” title showing at the top is normal — and easy to fix.</p>
+<p>Right now Quartz is using the <strong>file name</strong> as the page title:</p>
+<p><code>index.md  →  title becomes &quot;index&quot;</code></p>
+<p>We’ll override that.</p>
+<hr/>
+<h1 id="️-fix-the-page-title-proper-way">✏️ Fix the page title (proper way)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-fix-the-page-title-proper-way" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open:</p>
+<p><code>quartz-site/content/index.md</code></p>
+<p>Add this at the VERY TOP of the file:</p>
+<p><code>--- title: Praveen’s Knowledge Hub ---</code></p>
+<p>So your file should look like:</p>
+<p><code>--- title: Praveen’s Knowledge Hub ---  # Praveen’s Knowledge Hub  Welcome to my public knowledge base.  ## 📚 CA Final Notes - Direct Tax - GST - Audit  ## 🧠 Concepts Deep explanations of financial and business concepts.  ## ✍️ Blog My learning journey, mistakes, and strategies.  ## 📁 Resources Templates, summaries, and revision tools.</code></p>
+<hr/>
+<h1 id="rebuild-1">Rebuild<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rebuild-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Run again:</p>
+<p><code>npx quartz build --serve</code></p>
+<p>Refresh the page.</p>
+<p>Now the top title will be:</p>
+<p><code>Praveen’s Knowledge Hub</code></p>
+<p>NOT:</p>
+<p><code>index</code></p>
+<hr/>
+<h1 id="why-this-works">Why this works<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-works" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>That section:</p>
+<p><code>--- title: ... ---</code></p>
+<p>is called <strong>frontmatter</strong>.</p>
+<p>It tells Quartz:</p>
+<blockquote>
+<p>“Use this as page title instead of filename.”</p>
+</blockquote>
+<hr/>
+<h1 id="optional-make-it-look-cleaner">Optional (make it look cleaner)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#optional-make-it-look-cleaner" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You can also change the site name (left sidebar top).</p>
+<p>Open:</p>
+<p><code>quartz-site/quartz.config.ts</code></p>
+<p>Find:</p>
+<p><code>pageTitle: &quot;Quartz 4&quot;,</code></p>
+<p>Change to:</p>
+<p><code>pageTitle: &quot;Praveen’s Knowledge Hub&quot;,</code></p>
+<p>Rebuild again.</p>
+<p>Now left side will show your name instead of Quartz 4.</p>
+<hr/>
+<h1 id="-step-1--create-github-repo-website-host">🚀 STEP 1 — Create GitHub repo (website host)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-1--create-github-repo-website-host" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to GitHub → create a NEW repository:</p>
+<p>Name:</p>
+<p><code>notes-site</code></p>
+<p>Settings:</p>
+<ul>
+<li>
+<p>Public ✅</p>
+</li>
+<li>
+<p>DO NOT add README</p>
+</li>
+<li>
+<p>DO NOT add license</p>
+</li>
+<li>
+<p>DO NOT add gitignore</p>
+</li>
+</ul>
+<p>Click <strong>Create repository</strong></p>
+<hr/>
+<h1 id="-step-2--upload-your-quartz-site-folder">🚀 STEP 2 — Upload your quartz-site folder<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-2--upload-your-quartz-site-folder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open Git Bash inside:</p>
+<p><code>D:\Obsidian Vaults\quartz-site</code></p>
+<p>Run these commands one by one:</p>
+<p><code>git init git add . git commit -m &quot;Initial website&quot; git branch -M main git remote add origin https://github.com/pravee-n2/notes-site.git git push -u origin main</code></p>
+<p>(If Git asks login → sign in once)</p>
+<hr/>
+<h1 id="-step-3--turn-on-github-pages">🚀 STEP 3 — Turn ON GitHub Pages<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-3--turn-on-github-pages" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open your new repo on GitHub:</p>
+<p><code>notes-site → Settings → Pages</code></p>
+<p>Set:</p>
+<p><code>Source: Deploy from branch Branch: main Folder: /public</code></p>
+<p>Click <strong>Save</strong></p>
+<hr/>
+<h1 id="-step-4--your-site-url">🌐 STEP 4 — Your site URL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-step-4--your-site-url" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>After 1–2 minutes, your website will be live at:</p>
+<p><code>https://pravee-n2.github.io/notes-site/</code></p>
+<p>Open that link.</p>
+<p>You should see your homepage exactly like localhost.</p>
+<hr/>
+<h5 id="error-1">Error:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/quartz-site (main) $ git push -u origin main To <a href="https://github.com/pravee-n2/my-notes.git" class="external">https://github.com/pravee-n2/my-notes.git<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> ! [rejected] main <span>→</span> main (fetch first) error: failed to push some refs to ‘<a href="https://github.com/pravee-n2/my-notes.git" class="external">https://github.com/pravee-n2/my-notes.git<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>’ hint: Updates were rejected because the remote contains work that you do not hint: have locally. This is usually caused by another repository pushing to hint: the same ref. If you want to integrate the remote changes, use hint: ‘git pull’ before pushing again. hint: See the ‘Note about fast-forwards’ in ‘git push —help’ for details. Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/quartz-site (main)</p>
+<h6 id="solution">Solution:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#solution" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Perfect — this error is normal 👍<br/>
+And I can see exactly what happened.</p>
+<p>You accidentally connected this folder to your OLD repo:</p>
+<p><code>my-notes</code></p>
+<p>But we wanted a NEW repo:</p>
+<p><code>notes-site</code></p>
+<p>So Git is saying:</p>
+<blockquote>
+<p>“Remote already has files that don’t match your local files.”</p>
+</blockquote>
+<p>We’ll fix it in 20 seconds.</p>
+<hr/>
+<h1 id="-fix-safe--clean">🔧 Fix (Safe &amp; Clean)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-fix-safe--clean" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You just need to change the remote link.</p>
+<p>Run these commands inside <code>quartz-site</code>:</p>
+<h3 id="1️⃣-remove-wrong-connection">1️⃣ Remove wrong connection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-remove-wrong-connection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>git remote remove origin</code></p>
+<h3 id="2️⃣-connect-to-the-new-repo-notes-site">2️⃣ Connect to the NEW repo (notes-site)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-connect-to-the-new-repo-notes-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>git remote add origin https://github.com/pravee-n2/notes-site.git</code></p>
+<h3 id="3️⃣-push-again">3️⃣ Push again<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3️⃣-push-again" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>git push -u origin main</code></p>
+<hr/>
+<h1 id="️-important-check">⚠️ Important check<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-important-check" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Before Step 2:</p>
+<p>Did you already create this repo on GitHub?</p>
+<p><code>notes-site</code></p>
+<p>If NOT:</p>
+<ol>
+<li>
+<p>Go to GitHub</p>
+</li>
+<li>
+<p>Create new repo</p>
+</li>
+<li>
+<p>Name:</p>
+</li>
+</ol>
+<p><code>notes-site</code></p>
+<ol start="4">
+<li>Keep it EMPTY (no README)</li>
+</ol>
+<p>Then run the commands above.</p>
+<hr/>
+<h1 id="why-this-happened">Why this happened<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-happened" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Earlier:</p>
+<p><code>my-notes  → connected to Obsidian vault repo</code></p>
+<p>Now:</p>
+<p><code>quartz-site → must connect to website repo</code></p>
+<p>Two separate repos:</p>
+<ul>
+<li>
+<p>my-notes → raw notes</p>
+</li>
+<li>
+<p>notes-site → website</p>
+</li>
+</ul>
+<hr/>
+<h1 id="after-push-succeeds">After push succeeds<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-push-succeeds" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to:</p>
+<p><code>notes-site → Settings → Pages</code></p>
+<p>Set:</p>
+<p><code>Source: Deploy from branch Branch: main Folder: /public</code></p>
+<p>Save.</p>
+<p>Then your site will be LIVE at:</p>
+<p><code>https://pravee-n2.github.io/notes-site/</code></p>
+<hr/>
+<h5 id="error-2">Error:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/quartz-site (main) $ git pull origin main —allow-unrelated-histories fatal: ‘origin’ does not appear to be a git repository fatal: Could not read from remote repository. Please make sure you have the correct access rights and the repository exists.</p>
+<h6 id="solutions">Solutions:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#solutions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Don’t worry 👍 nothing is broken.<br/>
+This happened because earlier we removed/changed the remote, so now this folder is not connected to any GitHub repo.</p>
+<p>That’s why Git says:</p>
+<p><code>'origin' does not appear to be a git repository</code></p>
+<p>It simply means:</p>
+<blockquote>
+<p>“I don’t know which GitHub repo to talk to.”</p>
+</blockquote>
+<p>We just need to reconnect it.</p>
+<hr/>
+<h1 id="well-use-the-same-repo-my-notes--simplest-way">We’ll use the SAME repo (my-notes) — simplest way<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#well-use-the-same-repo-my-notes--simplest-way" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You already have this repo:</p>
+<p><code>https://github.com/pravee-n2/my-notes</code></p>
+<p>Now reconnect quartz-site to it.</p>
+<p>Inside Git Bash (in quartz-site), type:</p>
+<p><code>git remote add origin https://github.com/pravee-n2/my-notes.git</code></p>
+<p>Then run:</p>
+<p><code>git pull origin main --allow-unrelated-histories</code></p>
+<p>Then:</p>
+<p><code>git push -u origin main</code></p>
+<hr/>
+<h1 id="what-this-will-do">What this will do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-this-will-do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>
+<p>Connect quartz-site → my-notes repo</p>
+</li>
+<li>
+<p>Merge old notes + new website files</p>
+</li>
+<li>
+<p>Upload the website</p>
+</li>
+</ul>
+<hr/>
+<h1 id="after-push-succeeds-1">After push succeeds<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-push-succeeds-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go to:</p>
+<p><code>GitHub → my-notes → Settings → Pages</code></p>
+<p>Change to:</p>
+<p><code>Source: Deploy from branch Branch: main Folder: /public</code></p>
+<p>Save.</p>
+<p>After 1–2 minutes, your site will be LIVE at:</p>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<p>Fully online.<br/>
+Not dependent on your PC.<br/>
+Google can index it.</p>
+<hr/>
+<h5 id="error-3">Error:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Dr.Senku@Praveen MINGW64 /d/Obsidian Vaults/quartz-site (main) $ git pull origin main —allow-unrelated-histories remote: Enumerating objects: 3, done. remote: Counting objects: 100% (3/3), done. remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0) Unpacking objects: 100% (3/3), 854 bytes | 122.00 KiB/s, done. From <a href="https://github.com/pravee-n2/my-notes" class="external">https://github.com/pravee-n2/my-notes<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> * branch main <span>→</span> FETCH_HEAD * [new branch] main <span>→</span> origin/main Auto-merging README.md CONFLICT (add/add): Merge conflict in README.md Automatic merge failed; fix conflicts and then commit the result.</p>
+<h6 id="solution-1">Solution:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#solution-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Perfect 👍<br/>
+This is actually progress — not an error.</p>
+<p>Git successfully connected and started merging, but stopped because of a small conflict in:</p>
+<p><code>README.md</code></p>
+<p>This happens because:</p>
+<ul>
+<li>
+<p>GitHub repo already has a README</p>
+</li>
+<li>
+<p>Your quartz-site also has a README</p>
+</li>
+<li>
+<p>Git doesn’t know which one to keep</p>
+</li>
+</ul>
+<p>So it paused and asked you to decide.</p>
+<p>We’ll fix it in 30 seconds.</p>
+<hr/>
+<h1 id="️-fix-the-merge-conflict-very-easy">🛠️ Fix the merge conflict (very easy)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-fix-the-merge-conflict-very-easy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Just run these commands:</p>
+<p><code>git add . git commit -m &quot;merge quartz site&quot; git push -u origin main</code></p>
+<p>That’s it.</p>
+<p>You don’t even need to open the README file.<br/>
+We’re just telling Git:</p>
+<blockquote>
+<p>“Accept everything and continue.”</p>
+</blockquote>
+<hr/>
+<h1 id="what-will-happen-next">What will happen next<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-will-happen-next" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>After push completes:</p>
+<p>Go to:</p>
+<p><code>GitHub → my-notes → Settings → Pages</code></p>
+<p>Set:</p>
+<p><code>Source: Deploy from branch Branch: main Folder: /public</code></p>
+<p>Click Save.</p>
+<hr/>
+<h1 id="your-website-will-be-live-at">Your website will be LIVE at:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#your-website-will-be-live-at" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<p>Wait 1–2 minutes after saving Pages settings.</p>
+<hr/>
+<hr/>
+<p><img src="../Pasted-image-20260214095119.png" width="auto" height="auto" alt/>
+<img src="../Pasted-image-20260214095123.png" width="auto" height="auto" alt/></p>
+<p>Why is the website not loading?</p>
+<h6 id="solution-2">Solution:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#solution-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>You’re extremely close — nothing is broken 👍<br/>
+This is the FINAL small configuration step.</p>
+<p>From your screenshots I can clearly see the issue:</p>
+<ul>
+<li>
+<p>Your repo has:</p>
+<p><code>/public /content /quartz</code></p>
+</li>
+<li>
+<p>But GitHub Pages is still showing the default empty page:</p>
+<p><code>my-notes</code></p>
+</li>
+</ul>
+<p>That means GitHub Pages is still publishing from <code>/root</code> instead of <code>/public</code>.</p>
+<p>Quartz builds the real website into:</p>
+<p><code>public/</code></p>
+<p>GitHub must be told to use that folder.</p>
+<hr/>
+<h1 id="-fix-1-minute">🔧 Fix (1 minute)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-fix-1-minute" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Go here:</p>
+<p><code>GitHub → my-notes → Settings → Pages</code></p>
+<p>Under <strong>Build and deployment</strong></p>
+<p>Change to:</p>
+<p><code>Source: Deploy from branch Branch: main Folder: /public</code></p>
+<p>Then click:</p>
+<p><code>Save</code></p>
+<hr/>
+<h1 id="what-will-happen-next-1">What will happen next<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-will-happen-next-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>GitHub will show a message like:</p>
+<p><code>Your site is being built…</code></p>
+<p>Wait 1–2 minutes.</p>
+<p>Then refresh:</p>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<p>Now your Quartz site will appear (same as localhost).</p>
+<hr/>
+<h1 id="why-it-showed-blank-till-now">Why it showed blank till now<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-it-showed-blank-till-now" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>GitHub was serving:</p>
+<p><code>/root</code></p>
+<p>But Quartz site exists in:</p>
+<p><code>/public</code></p>
+<p>So it was showing the default repo landing page.</p>
+<hr/>
+<h1 id="one-more-important-step-after-changing-pages-folder">One more IMPORTANT step (after changing Pages folder)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#one-more-important-step-after-changing-pages-folder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Every time you change content, you must rebuild:</p>
+<p>Inside <code>quartz-site</code>:</p>
+<p><code>npx quartz build git add . git commit -m &quot;update site&quot; git push</code></p>
+<p>GitHub will auto-update the website.</p>
+<hr/>
+<p>Quartz + GitHub Pages just needs one proper method to deploy.</p>
+<p>GitHub Pages does NOT allow <code>/public</code> selection for project repos.</p>
+<p>So we will use the <strong>correct official Quartz deployment method</strong>.</p>
+<hr/>
+<h1 id="-important-truth">🚨 Important Truth<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-important-truth" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>For Quartz sites, GitHub Pages should use:</p>
+<p><code>/docs</code></p>
+<p>NOT <code>/public</code></p>
+<p>Because Quartz is designed to deploy to <code>/docs</code> when using GitHub Pages.</p>
+<p>Right now your Pages screen already says:</p>
+<p><code>Your GitHub Pages site is currently being built from the /docs folder</code></p>
+<p>That is actually CORRECT.</p>
+<p>So don’t switch to root.</p>
+<hr/>
+<h1 id="so-why-is-site-blank">So why is site blank?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#so-why-is-site-blank" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Because the built site is in:</p>
+<p><code>/public</code></p>
+<p>But GitHub is reading:</p>
+<p><code>/docs</code></p>
+<p>We must copy the built files into <code>/docs</code>.</p>
+<hr/>
+<h1 id="-final-fix-1-minute">🔧 FINAL FIX (1 minute)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-final-fix-1-minute" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Inside your quartz-site folder run:</p>
+<p><code>npx quartz build --output docs</code></p>
+<p>This tells Quartz:</p>
+<blockquote>
+<p>Put the website into <code>/docs</code> instead of <code>/public</code></p>
+</blockquote>
+<hr/>
+<p>Then push:</p>
+<p><code>git add . git commit -m &quot;deploy site&quot; git push</code></p>
+<hr/>
+<h1 id="what-happens-now">What happens now<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-happens-now" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>GitHub Pages already uses:</p>
+<p><code>main → /docs</code></p>
+<p>So after push:</p>
+<ul>
+<li>
+<p>It will detect new files in <code>/docs</code></p>
+</li>
+<li>
+<p>Build automatically</p>
+</li>
+<li>
+<p>Your site will appear</p>
+</li>
+</ul>
+<hr/>
+<h1 id="after-12-minutes-open">After 1–2 minutes open:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-12-minutes-open" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<p>You should see your Quartz homepage.</p>
+<hr/>
+<h1 id="why-this-is-the-cleanest-setup">Why this is the cleanest setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-is-the-cleanest-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>We will use:</p>
+<p><code>content → your notes docs    → live website</code></p>
+<p>And ignore <code>/public</code> completely.</p>
+<p>This is the standard GitHub Pages way.</p>
+<hr/>
+<p>If is refreshed now and website is loading</p>
+<p>You just built your own Obsidian-Publish alternative — fully free, fully yours.</p>
+<p>This is a big milestone. Seriously.</p>
+<hr/>
+<h1 id="-current-status-what-you-have-now">🟢 Current Status (What you have now)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-current-status-what-you-have-now" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Your site is:</p>
+<ul>
+<li>
+<p>✅ Fully online</p>
+</li>
+<li>
+<p>✅ Hosted on GitHub servers</p>
+</li>
+<li>
+<p>✅ Not dependent on your PC</p>
+</li>
+<li>
+<p>✅ Publicly accessible 24×7</p>
+</li>
+<li>
+<p>✅ Auto-updatable from your notes</p>
+</li>
+<li>
+<p>✅ Structured like Obsidian Publish</p>
+</li>
+<li>
+<p>⏳ Will become Google searchable (in a few days/weeks)</p>
+</li>
+</ul>
+<p>Link:</p>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<hr/>
+<h1 id="-how-your-system-now-works">🧠 How your system now works<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-how-your-system-now-works" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You now have a powerful pipeline:</p>
+<p><code>Obsidian Vault (private)         ↓ Copy selected notes         ↓ quartz-site/content (public notes)         ↓ npx quartz build --output docs         ↓ git push         ↓ LIVE WEBSITE</code></p>
+<p>You control what becomes public.</p>
+<hr/>
+<h1 id="-your-daily-workflow-super-simple">📌 Your daily workflow (SUPER SIMPLE)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-your-daily-workflow-super-simple" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Whenever you want to update site:</p>
+<h3 id="1️⃣-add--edit-notes-inside">1️⃣ Add / edit notes inside:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-add--edit-notes-inside" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>quartz-site/content</code></p>
+<h3 id="2️⃣-build-site">2️⃣ Build site:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-build-site" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>npx quartz build --output docs</code></p>
+<h3 id="3️⃣-push">3️⃣ Push:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3️⃣-push" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>git add . git commit -m &quot;update&quot; git push</code></p>
+<p>Done.<br/>
+Site updates in ~1 minute.</p>
+<hr/>
+<h1 id="error-4">Error:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error-4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>Failed to emit from plugin `CustomOgImages` codepoint 31-20e3 not found in map</code></p>
+<p>This happens when:</p>
+<ul>
+<li>
+<p>One of your notes contains an emoji like:</p>
+<ul>
+<li>
+<p>1️⃣ 2️⃣ 3️⃣</p>
+</li>
+<li>
+<p>special combined emoji</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Quartz tries to generate a social preview image</p>
+</li>
+<li>
+<p>The emoji font mapping fails</p>
+</li>
+</ul>
+<p>So build crashes.</p>
+<p>Your note:</p>
+<p><code>How to update site using Quartz.md</code></p>
+<p>probably contains numbered emojis like:</p>
+<p><code>1️⃣ Step 1 2️⃣ Step 2</code></p>
+<p>Those are the problem.</p>
+<hr/>
+<h1 id="️-fastest-fix-recommended">🛠️ FASTEST FIX (recommended)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-fastest-fix-recommended" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>We simply disable that feature.</p>
+<p>Open this file:</p>
+<p><code>quartz-site/quartz.config.ts</code></p>
+<p>Scroll to the bottom and find this line:</p>
+<p><code>Plugin.CustomOgImages(),</code></p>
+<p>Change it to:</p>
+<p><code>// Plugin.CustomOgImages(),</code></p>
+<p>(just add <code>//</code> in front)</p>
+<p>Save.</p>
+<hr/>
+<h1 id="then-rebuild-1">Then rebuild<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#then-rebuild-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Run:</p>
+<p><code>npx quartz build --output docs</code></p>
+<p>It should work now without crashing.</p>
+<hr/>
+<h1 id="what-you-just-disabled">What you just disabled<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-you-just-disabled" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>This feature was trying to auto-create:</p>
+<ul>
+<li>
+<p>Social media preview images</p>
+</li>
+<li>
+<p>When someone shares your link on WhatsApp / Twitter / LinkedIn</p>
+</li>
+</ul>
+<p>Not important right now.</p>
+<p>We can re-enable later.</p>
+<hr/>
+<h1 id="also-this-warning-is-harmless">Also this warning is harmless:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#also-this-warning-is-harmless" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><code>isn't yet tracked by git, dates will be inaccurate</code></p>
+<p>It just means that note hasn’t been committed yet.</p>
+<p>Ignore it.</p>
+<hr/>
+<h1 id="after-editing-config">After editing config<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-editing-config" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Do this:</p>
+<p><code>npx quartz build --output docs git add . git commit -m &quot;fix og image error&quot; git push</code></p>
+<p>Your site will update.</p>
+<hr/>
+<h1 id="error---html-not-loading">Error - HTML not loading<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#error---html-not-loading" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><img src="../Pasted-image-20260214095900.png" width="auto" height="auto" alt/></p>
+<h6 id="solution-3">Solution:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#solution-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Nothing is broken 😄<br/>
+This is actually expected — your CSS didn’t load.</p>
+<p>That’s why the site looks like:</p>
+<ul>
+<li>
+<p>No styling</p>
+</li>
+<li>
+<p>Big plain text</p>
+</li>
+<li>
+<p>Elements scattered</p>
+</li>
+</ul>
+<p>Which means:</p>
+<p><code>HTML loaded ✅ CSS path broken ❌</code></p>
+<p>And I know exactly why this happened.</p>
+<hr/>
+<h1 id="-root-cause">🎯 Root Cause<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-root-cause" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>When using GitHub Pages with a project repo:</p>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<p>Quartz MUST know your base URL.</p>
+<p>But in your config, it still says:</p>
+<p><code>baseUrl: &quot;quartz.jzhao.xyz&quot;</code></p>
+<p>So the site is trying to load styles from:</p>
+<p><code>quartz.jzhao.xyz/index.css</code></p>
+<p>Instead of:</p>
+<p><code>pravee-n2.github.io/my-notes/index.css</code></p>
+<p>So styling fails.</p>
+<hr/>
+<h1 id="-fix-30-seconds">🔧 Fix (30 seconds)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-fix-30-seconds" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open this file:</p>
+<p><code>quartz-site/quartz.config.ts</code></p>
+<p>Find this line:</p>
+<p><code>baseUrl: &quot;quartz.jzhao.xyz&quot;,</code></p>
+<p>Change it to:</p>
+<p><code>baseUrl: &quot;pravee-n2.github.io/my-notes&quot;,</code></p>
+<p>IMPORTANT:</p>
+<ul>
+<li>
+<p>No https</p>
+</li>
+<li>
+<p>No trailing slash</p>
+</li>
+</ul>
+<hr/>
+<h1 id="then-rebuild--push">Then rebuild + push<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#then-rebuild--push" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Run:</p>
+<p><code>npx quartz build --output docs git add . git commit -m &quot;fix base url&quot; git push</code></p>
+<hr/>
+<h1 id="after-1-minute">After 1 minute<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-1-minute" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Refresh:</p>
+<p><code>https://pravee-n2.github.io/my-notes/</code></p>
+<p>Your site will look normal again:</p>
+<ul>
+<li>
+<p>Dark theme</p>
+</li>
+<li>
+<p>Sidebar</p>
+</li>
+<li>
+<p>Search working</p>
+</li>
+<li>
+<p>Proper layout</p>
+</li>
+</ul>
+<hr/>
+<h1 id="why-this-happened-1">Why this happened<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-happened-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Quartz needs baseUrl to correctly generate:</p>
+<p><code>/index.css /static/... /tags/...</code></p>
+<p>But project sites use:</p>
+<p><code>/my-notes/index.css</code></p>
+<p>So we must tell it the repo name.</p>
+<hr/>
+<p><img src="../Pasted-image-20260214095947.png" width="auto" height="auto" alt/></p>
+<h1 id="1️⃣-why-does-it-show-quartz-4-on-the-top-left">1️⃣ Why does it show “Quartz 4” on the top left?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-why-does-it-show-quartz-4-on-the-top-left" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>That text comes from this line in your <code>quartz.config.ts</code>:</p>
+<p><code>pageTitle: &quot;Quartz 4&quot;,</code></p>
+<p>That value becomes the site title in the sidebar header.</p>
+<p>It is NOT a bug.<br/>
+It’s just the default name from the Quartz template.</p>
+<hr/>
+<h2 id="-how-to-change-it">✅ How to change it<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-how-to-change-it" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Open:</p>
+<p><code>quartz-site/quartz.config.ts</code></p>
+<p>Find:</p>
+<p><code>pageTitle: &quot;Quartz 4&quot;,</code></p>
+<p>Change it to:</p>
+<p><code>pageTitle: &quot;Praveen’s Knowledge Hub&quot;,</code></p>
+<p>Then:</p>
+<p><code>npx quartz build --output docs git add . git commit -m &quot;update site title&quot; git push</code></p>
+<p>Refresh after 1 minute.</p>
+<p>Now the top-left will show your brand instead of Quartz 4.</p>
+<hr/></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-8" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#-overall-architecture" data-for="-overall-architecture">🧭 Overall Architecture</a></li><li class="depth-0"><a href="#-step-by-step-setup-best-method" data-for="-step-by-step-setup-best-method">🚀 Step-by-Step Setup (Best Method)</a></li><li class="depth-1"><a href="#1️⃣-create-a-github-repository" data-for="1️⃣-create-a-github-repository">1️⃣ Create a GitHub Repository</a></li><li class="depth-1"><a href="#2️⃣-connect-obsidian-vault-to-git" data-for="2️⃣-connect-obsidian-vault-to-git">2️⃣ Connect Obsidian Vault to Git</a></li><li class="depth-1"><a href="#3️⃣-turn-it-into-a-website-github-pages" data-for="3️⃣-turn-it-into-a-website-github-pages">3️⃣ Turn It Into a Website (GitHub Pages)</a></li><li class="depth-2"><a href="#go-to" data-for="go-to">Go to:</a></li><li class="depth-0"><a href="#-make-it-look-like-obsidian-publish" data-for="-make-it-look-like-obsidian-publish">🧱 Make It Look Like Obsidian Publish</a></li><li class="depth-2"><a href="#-easiest-quartz-best-for-obsidian" data-for="-easiest-quartz-best-for-obsidian">⭐ EASIEST: Quartz (Best for Obsidian)</a></li><li class="depth-0"><a href="#-make-it-appear-in-google-search" data-for="-make-it-appear-in-google-search">🌍 Make It Appear in Google Search</a></li><li class="depth-2"><a href="#1️⃣-wait" data-for="1️⃣-wait">1️⃣ Wait</a></li><li class="depth-2"><a href="#2️⃣-submit-manually-faster" data-for="2️⃣-submit-manually-faster">2️⃣ Submit manually (faster)</a></li><li class="depth-0"><a href="#-auto-sync-workflow-your-dream-setup" data-for="-auto-sync-workflow-your-dream-setup">🔄 Auto-Sync Workflow (Your Dream Setup)</a></li><li class="depth-0"><a href="#install-quartz-obsidian-publish-alternative" data-for="install-quartz-obsidian-publish-alternative">Install Quartz (Obsidian Publish Alternative)</a></li><li class="depth-0"><a href="#-do-this-exactly" data-for="-do-this-exactly">🧭 Do This Exactly</a></li><li class="depth-1"><a href="#step-1--download-quartz" data-for="step-1--download-quartz">Step 1 — Download Quartz</a></li><li class="depth-1"><a href="#step-2--install-nodejs-if-not-installed" data-for="step-2--install-nodejs-if-not-installed">Step 2 — Install Node.js (if not installed)</a></li><li class="depth-1"><a href="#step-3--setup-quartz" data-for="step-3--setup-quartz">Step 3 — Setup Quartz</a></li><li class="depth-1"><a href="#step-4--build-website" data-for="step-4--build-website">Step 4 — Build Website</a></li><li class="depth-1"><a href="#step-5--push-to-github" data-for="step-5--push-to-github">Step 5 — Push to GitHub</a></li><li class="depth-1"><a href="#step-6--change-github-pages-source" data-for="step-6--change-github-pages-source">Step 6 — Change GitHub Pages Source</a></li><li class="depth-0"><a href="#error-encountered" data-for="error-encountered">Error encountered:</a></li><li class="depth-0"><a href="#️-correct-way-to-add-quartz-to-existing-notes-repo" data-for="️-correct-way-to-add-quartz-to-existing-notes-repo">🛠️ Correct Way to Add Quartz to Existing Notes Repo</a></li><li class="depth-1"><a href="#step-1--download-quartz-as-zip" data-for="step-1--download-quartz-as-zip">Step 1 — Download Quartz as ZIP</a></li><li class="depth-1"><a href="#step-2--copy-files" data-for="step-2--copy-files">Step 2 — Copy Files</a></li><li class="depth-1"><a href="#step-3--install-node-modules" data-for="step-3--install-node-modules">Step 3 — Install Node Modules</a></li><li class="depth-1"><a href="#step-4--build-site" data-for="step-4--build-site">Step 4 — Build Site</a></li><li class="depth-1"><a href="#step-5--push-to-github-1" data-for="step-5--push-to-github-1">Step 5 — Push to GitHub</a></li><li class="depth-1"><a href="#step-6--final-github-pages-setting" data-for="step-6--final-github-pages-setting">Step 6 — Final GitHub Pages Setting</a></li><li class="depth-0"><a href="#️-fix-2-minutes" data-for="️-fix-2-minutes">🛠️ Fix (2 minutes)</a></li><li class="depth-2"><a href="#step-1--openquartz-4folder" data-for="step-1--openquartz-4folder">Step 1 — Open quartz-4 folder</a></li><li class="depth-2"><a href="#step-2--move-everything-out" data-for="step-2--move-everything-out">Step 2 — Move everything OUT</a></li><li class="depth-2"><a href="#step-3--delete-empty-folder" data-for="step-3--delete-empty-folder">Step 3 — Delete empty folder</a></li><li class="depth-2"><a href="#step-4--install-quartz" data-for="step-4--install-quartz">Step 4 — Install Quartz</a></li><li class="depth-2"><a href="#step-5--build-website" data-for="step-5--build-website">Step 5 — Build website</a></li><li class="depth-2"><a href="#step-6--push-to-github" data-for="step-6--push-to-github">Step 6 — Push to GitHub</a></li><li class="depth-2"><a href="#step-7--final-github-setting" data-for="step-7--final-github-setting">Step 7 — Final GitHub Setting</a></li><li class="depth-0"><a href="#-why-this-happened" data-for="-why-this-happened">🧠 Why this happened</a></li><li class="depth-0"><a href="#-recommended-fix-best-long-term" data-for="-recommended-fix-best-long-term">🟢 Recommended Fix (Best Long-Term)</a></li><li class="depth-0"><a href="#why-this-is-better" data-for="why-this-is-better">Why this is better</a></li><li class="depth-0"><a href="#-final-clean-structure-what-were-creating" data-for="-final-clean-structure-what-were-creating">🧭 Final Clean Structure (What we’re creating)</a></li><li class="depth-0"><a href="#-step-1--create-new-folder" data-for="-step-1--create-new-folder">🧹 Step 1 — Create new folder</a></li><li class="depth-0"><a href="#-step-2--move-quartz-files-out-of-vault" data-for="-step-2--move-quartz-files-out-of-vault">📦 Step 2 — Move Quartz files OUT of vault</a></li><li class="depth-0"><a href="#-after-moving-it-should-look-like" data-for="-after-moving-it-should-look-like">📁 After moving, it should look like:</a></li><li class="depth-2"><a href="#obsidian_vault-clean-again" data-for="obsidian_vault-clean-again">Obsidian_Vault (clean again)</a></li><li class="depth-2"><a href="#quartz-site" data-for="quartz-site">quartz-site</a></li><li class="depth-0"><a href="#️-step-3--tell-quartz-where-your-notes-are" data-for="️-step-3--tell-quartz-where-your-notes-are">⚙️ Step 3 — Tell Quartz where your notes are</a></li><li class="depth-0"><a href="#-step-4--install--build-inside-quartz-site" data-for="-step-4--install--build-inside-quartz-site">📦 Step 4 — Install &amp; Build (inside quartz-site)</a></li><li class="depth-0"><a href="#-one-important-change-needed" data-for="-one-important-change-needed">🔴 One IMPORTANT change needed</a></li><li class="depth-0"><a href="#️-do-this-simple--safe" data-for="️-do-this-simple--safe">🛠️ Do This (Simple &amp; Safe)</a></li><li class="depth-1"><a href="#step-1--open" data-for="step-1--open">Step 1 — Open:</a></li><li class="depth-1"><a href="#step-2--copy-your-notes-into-content" data-for="step-2--copy-your-notes-into-content">Step 2 — Copy your notes INTO content</a></li><li class="depth-0"><a href="#after-copying-it-should-look-like" data-for="after-copying-it-should-look-like">After copying, it should look like:</a></li><li class="depth-0"><a href="#-step-3--install--build" data-for="-step-3--install--build">📦 Step 3 — Install + Build</a></li><li class="depth-0"><a href="#-step-4--preview-locally" data-for="-step-4--preview-locally">🌍 Step 4 — Preview locally</a></li><li class="depth-0"><a href="#-what-this-means-important" data-for="-what-this-means-important">🧠 What this means (important)</a></li><li class="depth-0"><a href="#-recommended-workflow-very-smart-approach" data-for="-recommended-workflow-very-smart-approach">🟢 Recommended workflow (very smart approach)</a></li><li class="depth-0"><a href="#-pro-tip-used-by-many-people" data-for="-pro-tip-used-by-many-people">🔥 Pro tip (used by many people)</a></li><li class="depth-0"><a href="#-example-strategy-perfect-for-ca-prep" data-for="-example-strategy-perfect-for-ca-prep">🧾 Example strategy (perfect for CA prep)</a></li><li class="depth-0"><a href="#-next-step" data-for="-next-step">📦 Next step</a></li><li class="depth-0"><a href="#-where-to-run-the-commands" data-for="-where-to-run-the-commands">📍 Where to run the commands</a></li><li class="depth-2"><a href="#method-1-easiest" data-for="method-1-easiest">Method 1 (easiest)</a></li><li class="depth-0"><a href="#-now-run-the-commands-there" data-for="-now-run-the-commands-there">📦 Now run the commands there</a></li><li class="depth-0"><a href="#-open-the-site" data-for="-open-the-site">🌐 Open the site</a></li><li class="depth-0"><a href="#important-note" data-for="important-note">Important note</a></li><li class="depth-0"><a href="#error" data-for="error">Error</a></li><li class="depth-0"><a href="#-fix-10-seconds" data-for="-fix-10-seconds">✅ Fix (10 seconds)</a></li><li class="depth-2"><a href="#next-step-preview-the-site" data-for="next-step-preview-the-site">Next step: Preview the site</a></li><li class="depth-0"><a href="#if-the-page-looks-empty" data-for="if-the-page-looks-empty">If the page looks empty</a></li><li class="depth-0"><a href="#-correct-command-to-preview-site-quartz-v4" data-for="-correct-command-to-preview-site-quartz-v4">✅ Correct command to preview site (Quartz v4)</a></li><li class="depth-0"><a href="#what-you-should-see-after-running" data-for="what-you-should-see-after-running">What you should see after running</a></li><li class="depth-0"><a href="#if-page-looks-empty" data-for="if-page-looks-empty">If page looks empty</a></li><li class="depth-0"><a href="#why-youre-seeing-404" data-for="why-youre-seeing-404">Why you’re seeing 404</a></li><li class="depth-0"><a href="#important-concept-key-understanding" data-for="important-concept-key-understanding">Important concept (key understanding)</a></li><li class="depth-0"><a href="#best-first-test-recommended" data-for="best-first-test-recommended">Best first test (recommended)</a></li><li class="depth-0"><a href="#how-your-future-workflow-will-look" data-for="how-your-future-workflow-will-look">How your future workflow will look</a></li><li class="depth-0"><a href="#-fix-10-seconds-1" data-for="-fix-10-seconds-1">🎯 Fix (10 seconds)</a></li><li class="depth-0"><a href="#then-rebuild" data-for="then-rebuild">Then rebuild</a></li><li class="depth-0"><a href="#why-this-happens" data-for="why-this-happens">Why this happens</a></li><li class="depth-0"><a href="#later-you-can-add-more-notes-like" data-for="later-you-can-add-more-notes-like">Later you can add more notes like:</a></li><li class="depth-2"><a href="#most-likely-causes-one-of-these-100-is-true" data-for="most-likely-causes-one-of-these-100-is-true">Most likely causes (one of these 100% is true)</a></li><li class="depth-0"><a href="#-lets-verify-properly" data-for="-lets-verify-properly">🔍 Let’s verify properly</a></li><li class="depth-0"><a href="#fix-safe-method" data-for="fix-safe-method">Fix (safe method)</a></li><li class="depth-0"><a href="#rebuild" data-for="rebuild">Rebuild</a></li><li class="depth-0"><a href="#before-we-publish--important-decision" data-for="before-we-publish--important-decision">Before we publish — important decision</a></li><li class="depth-0"><a href="#️-fix-the-page-title-proper-way" data-for="️-fix-the-page-title-proper-way">✏️ Fix the page title (proper way)</a></li><li class="depth-0"><a href="#rebuild-1" data-for="rebuild-1">Rebuild</a></li><li class="depth-0"><a href="#why-this-works" data-for="why-this-works">Why this works</a></li><li class="depth-0"><a href="#optional-make-it-look-cleaner" data-for="optional-make-it-look-cleaner">Optional (make it look cleaner)</a></li><li class="depth-0"><a href="#-step-1--create-github-repo-website-host" data-for="-step-1--create-github-repo-website-host">🚀 STEP 1 — Create GitHub repo (website host)</a></li><li class="depth-0"><a href="#-step-2--upload-your-quartz-site-folder" data-for="-step-2--upload-your-quartz-site-folder">🚀 STEP 2 — Upload your quartz-site folder</a></li><li class="depth-0"><a href="#-step-3--turn-on-github-pages" data-for="-step-3--turn-on-github-pages">🚀 STEP 3 — Turn ON GitHub Pages</a></li><li class="depth-0"><a href="#-step-4--your-site-url" data-for="-step-4--your-site-url">🌐 STEP 4 — Your site URL</a></li><li class="depth-0"><a href="#-fix-safe--clean" data-for="-fix-safe--clean">🔧 Fix (Safe &amp; Clean)</a></li><li class="depth-2"><a href="#1️⃣-remove-wrong-connection" data-for="1️⃣-remove-wrong-connection">1️⃣ Remove wrong connection</a></li><li class="depth-2"><a href="#2️⃣-connect-to-the-new-repo-notes-site" data-for="2️⃣-connect-to-the-new-repo-notes-site">2️⃣ Connect to the NEW repo (notes-site)</a></li><li class="depth-2"><a href="#3️⃣-push-again" data-for="3️⃣-push-again">3️⃣ Push again</a></li><li class="depth-0"><a href="#️-important-check" data-for="️-important-check">⚠️ Important check</a></li><li class="depth-0"><a href="#why-this-happened" data-for="why-this-happened">Why this happened</a></li><li class="depth-0"><a href="#after-push-succeeds" data-for="after-push-succeeds">After push succeeds</a></li><li class="depth-0"><a href="#well-use-the-same-repo-my-notes--simplest-way" data-for="well-use-the-same-repo-my-notes--simplest-way">We’ll use the SAME repo (my-notes) — simplest way</a></li><li class="depth-0"><a href="#what-this-will-do" data-for="what-this-will-do">What this will do</a></li><li class="depth-0"><a href="#after-push-succeeds-1" data-for="after-push-succeeds-1">After push succeeds</a></li><li class="depth-0"><a href="#️-fix-the-merge-conflict-very-easy" data-for="️-fix-the-merge-conflict-very-easy">🛠️ Fix the merge conflict (very easy)</a></li><li class="depth-0"><a href="#what-will-happen-next" data-for="what-will-happen-next">What will happen next</a></li><li class="depth-0"><a href="#your-website-will-be-live-at" data-for="your-website-will-be-live-at">Your website will be LIVE at:</a></li><li class="depth-0"><a href="#-fix-1-minute" data-for="-fix-1-minute">🔧 Fix (1 minute)</a></li><li class="depth-0"><a href="#what-will-happen-next-1" data-for="what-will-happen-next-1">What will happen next</a></li><li class="depth-0"><a href="#why-it-showed-blank-till-now" data-for="why-it-showed-blank-till-now">Why it showed blank till now</a></li><li class="depth-0"><a href="#one-more-important-step-after-changing-pages-folder" data-for="one-more-important-step-after-changing-pages-folder">One more IMPORTANT step (after changing Pages folder)</a></li><li class="depth-0"><a href="#-important-truth" data-for="-important-truth">🚨 Important Truth</a></li><li class="depth-0"><a href="#so-why-is-site-blank" data-for="so-why-is-site-blank">So why is site blank?</a></li><li class="depth-0"><a href="#-final-fix-1-minute" data-for="-final-fix-1-minute">🔧 FINAL FIX (1 minute)</a></li><li class="depth-0"><a href="#what-happens-now" data-for="what-happens-now">What happens now</a></li><li class="depth-0"><a href="#after-12-minutes-open" data-for="after-12-minutes-open">After 1–2 minutes open:</a></li><li class="depth-0"><a href="#why-this-is-the-cleanest-setup" data-for="why-this-is-the-cleanest-setup">Why this is the cleanest setup</a></li><li class="depth-0"><a href="#-current-status-what-you-have-now" data-for="-current-status-what-you-have-now">🟢 Current Status (What you have now)</a></li><li class="depth-0"><a href="#-how-your-system-now-works" data-for="-how-your-system-now-works">🧠 How your system now works</a></li><li class="depth-0"><a href="#-your-daily-workflow-super-simple" data-for="-your-daily-workflow-super-simple">📌 Your daily workflow (SUPER SIMPLE)</a></li><li class="depth-2"><a href="#1️⃣-add--edit-notes-inside" data-for="1️⃣-add--edit-notes-inside">1️⃣ Add / edit notes inside:</a></li><li class="depth-2"><a href="#2️⃣-build-site" data-for="2️⃣-build-site">2️⃣ Build site:</a></li><li class="depth-2"><a href="#3️⃣-push" data-for="3️⃣-push">3️⃣ Push:</a></li><li class="depth-0"><a href="#error-1" data-for="error-1">Error:</a></li><li class="depth-0"><a href="#️-fastest-fix-recommended" data-for="️-fastest-fix-recommended">🛠️ FASTEST FIX (recommended)</a></li><li class="depth-0"><a href="#then-rebuild-1" data-for="then-rebuild-1">Then rebuild</a></li><li class="depth-0"><a href="#what-you-just-disabled" data-for="what-you-just-disabled">What you just disabled</a></li><li class="depth-0"><a href="#also-this-warning-is-harmless" data-for="also-this-warning-is-harmless">Also this warning is harmless:</a></li><li class="depth-0"><a href="#after-editing-config" data-for="after-editing-config">After editing config</a></li><li class="depth-0"><a href="#error---html-not-loading" data-for="error---html-not-loading">Error - HTML not loading</a></li><li class="depth-0"><a href="#-root-cause" data-for="-root-cause">🎯 Root Cause</a></li><li class="depth-0"><a href="#-fix-30-seconds" data-for="-fix-30-seconds">🔧 Fix (30 seconds)</a></li><li class="depth-0"><a href="#then-rebuild--push" data-for="then-rebuild--push">Then rebuild + push</a></li><li class="depth-0"><a href="#after-1-minute" data-for="after-1-minute">After 1 minute</a></li><li class="depth-0"><a href="#why-this-happened-1" data-for="why-this-happened-1">Why this happened</a></li><li class="depth-0"><a href="#1️⃣-why-does-it-show-quartz-4-on-the-top-left" data-for="1️⃣-why-does-it-show-quartz-4-on-the-top-left">1️⃣ Why does it show “Quartz 4” on the top left?</a></li><li class="depth-1"><a href="#-how-to-change-it" data-for="-how-to-change-it">✅ How to change it</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

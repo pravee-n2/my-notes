@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>05 How to setup in Mobile Device</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Digital Garden"/><meta property="og:title" content="05 How to setup in Mobile Device"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="05 How to setup in Mobile Device"/><meta name="twitter:description" content="Step 1 — Install apps From Play Store install: Obsidian Termux (optional but helpful) Step 2 — Download your vault from GitHub We need the vault folder on phone."/><meta property="og:description" content="Step 1 — Install apps From Play Store install: Obsidian Termux (optional but helpful) Step 2 — Download your vault from GitHub We need the vault folder on phone."/><meta property="og:image:alt" content="Step 1 — Install apps From Play Store install: Obsidian Termux (optional but helpful) Step 2 — Download your vault from GitHub We need the vault folder on phone."/><meta property="og:image" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta property="og:image:url" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta name="twitter:image" content="https://pravee-n2.github.io/my-notes/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="pravee-n2.github.io/my-notes"/><meta property="og:url" content="https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device"/><meta property="twitter:url" content="https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Step 1 — Install apps From Play Store install: Obsidian Termux (optional but helpful) Step 2 — Download your vault from GitHub We need the vault folder on phone."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiRDpcXE9ic2lkaWFuIFZhdWx0c1xccXVhcnR6LXNpdGVcXHF1YXJ0elxcY29tcG9uZW50c1xcc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://pravee-n2.github.io/my-notes/index.xml"/></head><body data-slug="GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Digital Garden</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-6" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../GIT-setup-for-Obsidian/">GIT setup for Obsidian</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>05 How to setup in Mobile Device</a></div></nav><h1 class="article-title">05 How to setup in Mobile Device</h1><p show-comma="true" class="content-meta"><time datetime="2026-02-14T03:15:33.706Z">Feb 14, 2026</time><span>5 min read</span></p></div></div><article class="popover-hint"><h2 id="step-1--install-apps">Step 1 — Install apps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1--install-apps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>From Play Store install:</p>
+<ul>
+<li>
+<p><strong>Obsidian</strong></p>
+</li>
+<li>
+<p><strong>Termux</strong> (optional but helpful)</p>
+</li>
+</ul>
+<hr/>
+<h2 id="step-2--download-your-vault-from-github">Step 2 — Download your vault from GitHub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2--download-your-vault-from-github" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>We need the vault folder on phone.</p>
+<h3 id="easiest-way">Easiest way:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#easiest-way" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Open browser:</li>
+</ol>
+<pre><code>https://github.com/pravee-n2/Obsidian_Vault
+</code></pre>
+<ol start="2">
+<li>Tap:</li>
+</ol>
+<pre><code>Code → Download ZIP
+</code></pre>
+<ol start="3">
+<li>Extract ZIP to:</li>
+</ol>
+<pre><code>Internal Storage/Documents/Obsidian/Office
+</code></pre>
+<hr/>
+<h2 id="step-3--open-vault-in-obsidian-mobile">Step 3 — Open vault in Obsidian mobile<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3--open-vault-in-obsidian-mobile" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p>Open Obsidian app</p>
+</li>
+<li>
+<p>Tap:</p>
+</li>
+</ol>
+<pre><code>Open folder as vault
+</code></pre>
+<ol start="3">
+<li>Select:</li>
+</ol>
+<pre><code>Obsidian_Vault (the extracted folder)
+</code></pre>
+<p>Now your notes appear on mobile 🎉</p>
+<hr/>
+<h2 id="step-4--install-git-plugin-in-mobile-obsidian">Step 4 — Install Git plugin in mobile Obsidian<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4--install-git-plugin-in-mobile-obsidian" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Same as laptop:</p>
+<pre><code>Settings → Community Plugins
+</code></pre>
+<p>Search:</p>
+<pre><code>Git
+</code></pre>
+<p>Install + Enable.</p>
+<hr/>
+<h2 id="step-5--set-same-sync-settings">Step 5 — Set same sync settings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5--set-same-sync-settings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Set:</p>
+<ul>
+<li>Auto pull on startup</li>
+<li>Turn off pull feature in Auto commit and sync</li>
+<li>Auto commit and sync manually when the editing ends.</li>
+</ul>
+<p>Now phone will sync too.</p>
+<hr/>
+<h1 id="generate-token-for-repo">Generate token for Repo<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#generate-token-for-repo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><img src="../Pasted-image-20260214083645.png" width="auto" height="auto" alt/></p>
+<p>You must use:</p>
+<blockquote>
+<p><strong>GitHub username + Personal Access Token (PAT)</strong></p>
+</blockquote>
+<p>Think of PAT as a special Git password.</p>
+<hr/>
+<h1 id="why-password-wont-work">Why password won’t work<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-password-wont-work" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>GitHub removed password authentication for security.</p>
+<p>So:</p>
+<ul>
+<li>
+<p>❌ GitHub password → WILL FAIL</p>
+</li>
+<li>
+<p>✅ Personal Access Token → WORKS</p>
+</li>
+</ul>
+<hr/>
+<h1 id="how-to-generate-the-correct-token-2-minutes">How to generate the correct token (2 minutes)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-to-generate-the-correct-token-2-minutes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Do this on your laptop browser:</p>
+<ol>
+<li>Open:</li>
+</ol>
+<pre><code>https://github.com/settings/tokens
+</code></pre>
+<ol start="2">
+<li>Click:</li>
+</ol>
+<pre><code>Generate new token (classic)
+</code></pre>
+<ol start="3">
+<li>Give name:</li>
+</ol>
+<pre><code>obsidian-mobile
+</code></pre>
+<ol start="4">
+<li>Expiry:</li>
+</ol>
+<pre><code>No expiry
+</code></pre>
+<p>(or 1 year)</p>
+<ol start="5">
+<li>VERY IMPORTANT — Tick this:</li>
+</ol>
+<pre><code>repo  ✅
+</code></pre>
+<p>That’s enough.</p>
+<ol start="6">
+<li>Click:</li>
+</ol>
+<pre><code>Generate token
+</code></pre>
+<ol start="7">
+<li>COPY the token immediately<br/>
+(It will look like: <code>ghp_xxxxxxxxxxxxx</code>)</li>
+</ol>
+<p>You cannot see it again later.</p>
+<hr/>
+<h1 id="now-fill-in-mobile-obsidian">Now fill in mobile Obsidian<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#now-fill-in-mobile-obsidian" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>In the screen you showed:</p>
+<h3 id="username">Username:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#username" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>(github_username)
+</code></pre>
+<h3 id="passwordpersonal-access-token">Password/Personal access token:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#passwordpersonal-access-token" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Paste the token you generated.</p>
+<hr/>
+<h1 id="then-do-this">Then do this<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#then-do-this" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Restart Obsidian app.</p>
+<p>Now try:</p>
+<ul>
+<li>
+<p>Pull</p>
+</li>
+<li>
+<p>Commit &amp; Sync</p>
+</li>
+</ul>
+<p>It should connect.</p>
+<hr/>
+<h1 id="how-to-generate-pat">How to Generate PAT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-to-generate-pat" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><img src="../Pasted-image-20260214083853.png" width="auto" height="auto" alt/></p>
+<hr/>
+<h1 id="what-to-select-here">What to select here<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-select-here" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>You already did most correctly:</p>
+<ul>
+<li>
+<p>Note: <code>obsidian-mobile (type_your_desired_name)</code> ✔</p>
+</li>
+<li>
+<p>Expiration: <code>No expiration</code> ✔ (ok for personal use)</p>
+</li>
+<li>
+<p>Scope: <code>repo</code> ✔ VERY IMPORTANT</p>
+</li>
+</ul>
+<p>You don’t need to tick anything else.</p>
+<hr/>
+<h1 id="now-scroll-down-and-click">Now scroll down and click:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#now-scroll-down-and-click" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<pre><code>Generate token
+</code></pre>
+<hr/>
+<h1 id="very-important-step-dont-miss-this">VERY IMPORTANT STEP (Don’t miss this)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#very-important-step-dont-miss-this" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>After clicking generate, GitHub will show a long code like:</p>
+<pre><code>ghp_xxxxxxxxxxxxxxxxxxxxx
+</code></pre>
+<p>You must:</p>
+<ol>
+<li>
+<p>COPY it immediately</p>
+</li>
+<li>
+<p>Save it somewhere temporarily</p>
+</li>
+</ol>
+<p>Because:</p>
+<ul>
+<li>GitHub will NEVER show it again</li>
+</ul>
+<hr/>
+<h1 id="now-go-to-your-phone">Now go to your phone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#now-go-to-your-phone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>In Obsidian Git settings:</p>
+<h3 id="username-1">Username:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#username-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>(github_username)
+</code></pre>
+<h3 id="password--personal-access-token">Password / Personal Access Token:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#password--personal-access-token" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Paste that token.</p>
+<p>Then restart Obsidian app.</p>
+<hr/>
+<h1 id="after-restart-try-this-inside-mobile-obsidian">After restart, try this inside mobile Obsidian:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-restart-try-this-inside-mobile-obsidian" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Open command palette (search icon) → type:</p>
+<pre><code>Pull
+</code></pre>
+<p>Tap:</p>
+<pre><code>Git: Pull
+</code></pre>
+<p>If it connects → mobile sync is ready.</p>
+<hr/>
+<h1 id="question-i-used-pull-but-it-showed-cant-find-a-repository-create-one-using-the-command">Question: I used pull but it showed “Can’t find a repository create one using the command”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#question-i-used-pull-but-it-showed-cant-find-a-repository-create-one-using-the-command" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>That error is expected 👍 — and it tells us exactly what’s wrong.</p>
+<blockquote>
+<p><strong>“Can’t find a repository”</strong> on mobile means:<br/>
+Your phone vault folder does NOT contain the <code>.git</code> folder.</p>
+</blockquote>
+<p>So the mobile app is seeing only notes, not the Git repo.</p>
+<p>This usually happens if you:</p>
+<ul>
+<li>
+<p>Downloaded ZIP from GitHub<br/>
+OR</p>
+</li>
+<li>
+<p>Copied files manually</p>
+</li>
+</ul>
+<p>ZIP download does NOT include the <code>.git</code> directory.</p>
+<p>And without <code>.git</code>, Git plugin cannot sync.</p>
+<hr/>
+<h1 id="-why-this-happened">🔴 Why this happened<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-why-this-happened" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>When you did:</p>
+<p><code>Download ZIP</code></p>
+<p>GitHub gives only files:</p>
+<p><code>.md files folders</code></p>
+<p>But NOT:</p>
+<p><code>.git   ❌ (hidden repo data)</code></p>
+<p>So Obsidian mobile says:</p>
+<blockquote>
+<p>“No repository found”</p>
+</blockquote>
+<hr/>
+<p>You can directly copy the <code>.git</code> folder from laptop to phone.</p>
+<p>This is the easiest non-technical method.</p>
+<hr/>
+<h1 id="why-this-works">Why this works<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-this-works" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Git plugin only needs one thing:</p>
+<p><code>Vault folder must contain:    .git   ← repository data    .obsidian    notes</code></p>
+<p>If <code>.git</code> is present → mobile will detect repo instantly.</p>
+<p>So instead of cloning on phone, you can just copy the full vault folder.</p>
+<hr/>
+<h1 id="easiest-method">EASIEST METHOD<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#easiest-method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="step-1--on-laptop">Step 1 — On laptop<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1--on-laptop" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Go to:</p>
+<p><code>D:\(username)\Obsidian Vaults\Office</code></p>
+<p>Copy the ENTIRE folder:</p>
+<p><code>Office</code></p>
+<p>Important: It must include: (Else, drill down to the folder and enable “VIEW HIDDEN ITEMS” in File explorer, you will see <code>.git</code> folder, simply copy paste it into your Mobile Obsidian Folder)</p>
+<p><code>.git      ✔ .obsidian ✔ Career Clippings Financial Modelling Miscellaneous</code></p>
+<hr/>
+<h2 id="step-2--send-to-phone">Step 2 — Send to phone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2--send-to-phone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Any method is fine:</p>
+<ul>
+<li>
+<p>USB cable (best)</p>
+</li>
+<li>
+<p>ShareIt</p>
+</li>
+<li>
+<p>Nearby Share</p>
+</li>
+<li>
+<p>Google Drive (zip and upload)</p>
+</li>
+</ul>
+<p>Paste it to phone inside:</p>
+<p><code>Internal Storage/Documents/</code></p>
+<p>So path becomes:</p>
+<p><code>Documents/Office</code></p>
+<hr/>
+<h2 id="step-3--open-in-obsidian-mobile">Step 3 — Open in Obsidian mobile<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3--open-in-obsidian-mobile" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Open Obsidian → Open folder as vault → select:</p>
+<p><code>Documents/Office</code></p>
+<p>Now Git plugin will detect repo automatically.</p>
+<hr/>
+<h2 id="step-4--enter-credentials">Step 4 — Enter credentials<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4--enter-credentials" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>In mobile Git plugin:</p>
+<p>Username:</p>
+<p><code>(github_username)</code></p>
+<p>Password:<br/>
+Paste the Personal Access Token.</p>
+<p>Restart Obsidian once.</p>
+<hr/>
+<h2 id="step-5--test-sync">Step 5 — Test sync<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5--test-sync" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Use command palette:</p>
+<p><code>Git: Pull</code></p>
+<p>Then:</p>
+<p><code>Git: Commit &amp; Sync</code></p>
+<p>Should work.</p>
+<hr/>
+<h1 id="very-important-warning-️">VERY IMPORTANT WARNING ⚠️<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#very-important-warning-️" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>When copying from laptop:</p>
+<p>Make sure hidden folders are visible.</p>
+<p>Because <code>.git</code> is hidden.</p>
+<p>If you only copy visible files, repo won’t work.</p>
+<h3 id="in-windows">In Windows:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#in-windows" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>View → Show → Hidden items ✔</code></p>
+<p>Then copy.</p>
+<hr/>
+<h1 id="how-to-set-author-name-for-commit">How to set Author name for Commit?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-to-set-author-name-for-commit" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><img src="../Pasted-image-20260214084416.png" width="auto" height="auto" alt/></p>
+<p>Short answer:</p>
+<p>👉 <strong>Yes, use the SAME name and email as your desktop Git setup.</strong></p>
+<hr/>
+<h1 id="what-to-enter-in-each-field">What to enter in each field<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-to-enter-in-each-field" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h3 id="username-on-your-git-server">Username on your git server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#username-on-your-git-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Already correct:</p>
+<pre><code>(github_username)
+</code></pre>
+<hr/>
+<h3 id="password--personal-access-token-1">Password / Personal access token<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#password--personal-access-token-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Paste the token you generated from GitHub:</p>
+<pre><code>ghp_xxxxxxxxxxxxxx
+</code></pre>
+<hr/>
+<h3 id="author-name-for-commit">Author name for commit<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#author-name-for-commit" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use the same name you set earlier on laptop.</p>
+<p>Example:</p>
+<pre><code>Praveen
+</code></pre>
+<p>(or your full name if you used that)</p>
+<p>This is just a label shown in commit history.</p>
+<hr/>
+<h3 id="author-email-for-commit">Author email for commit<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#author-email-for-commit" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use the SAME email you used when configuring Git on laptop.</p>
+<p>Example:</p>
+<pre><code>yourgithubemail@gmail.com
+</code></pre>
+<p>This should match the one you used in:</p>
+<pre><code>git config --global user.email
+</code></pre>
+<hr/>
+<h1 id="why-keeping-same-nameemail-is-important">Why keeping same name/email is important<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#why-keeping-same-nameemail-is-important" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>If you use different ones:</p>
+<ul>
+<li>
+<p>GitHub will show commits as from different people</p>
+</li>
+<li>
+<p>History will look messy</p>
+</li>
+<li>
+<p>Sync still works, but identity splits</p>
+</li>
+</ul>
+<p>If same:</p>
+<ul>
+<li>
+<p>All devices look like one user</p>
+</li>
+<li>
+<p>Clean history</p>
+</li>
+</ul>
+<hr/>
+<h1 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Fill like this:</p>
+<ul>
+<li>
+<p>Username → <code>(github_username)</code></p>
+</li>
+<li>
+<p>Token → (paste PAT)</p>
+</li>
+<li>
+<p>Author name → <code>Praveen</code></p>
+</li>
+<li>
+<p>Author email → same GitHub email</p>
+</li>
+</ul>
+<hr/></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-4" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-1"><a href="#step-1--install-apps" data-for="step-1--install-apps">Step 1 — Install apps</a></li><li class="depth-1"><a href="#step-2--download-your-vault-from-github" data-for="step-2--download-your-vault-from-github">Step 2 — Download your vault from GitHub</a></li><li class="depth-2"><a href="#easiest-way" data-for="easiest-way">Easiest way:</a></li><li class="depth-1"><a href="#step-3--open-vault-in-obsidian-mobile" data-for="step-3--open-vault-in-obsidian-mobile">Step 3 — Open vault in Obsidian mobile</a></li><li class="depth-1"><a href="#step-4--install-git-plugin-in-mobile-obsidian" data-for="step-4--install-git-plugin-in-mobile-obsidian">Step 4 — Install Git plugin in mobile Obsidian</a></li><li class="depth-1"><a href="#step-5--set-same-sync-settings" data-for="step-5--set-same-sync-settings">Step 5 — Set same sync settings</a></li><li class="depth-0"><a href="#generate-token-for-repo" data-for="generate-token-for-repo">Generate token for Repo</a></li><li class="depth-0"><a href="#why-password-wont-work" data-for="why-password-wont-work">Why password won’t work</a></li><li class="depth-0"><a href="#how-to-generate-the-correct-token-2-minutes" data-for="how-to-generate-the-correct-token-2-minutes">How to generate the correct token (2 minutes)</a></li><li class="depth-0"><a href="#now-fill-in-mobile-obsidian" data-for="now-fill-in-mobile-obsidian">Now fill in mobile Obsidian</a></li><li class="depth-2"><a href="#username" data-for="username">Username:</a></li><li class="depth-2"><a href="#passwordpersonal-access-token" data-for="passwordpersonal-access-token">Password/Personal access token:</a></li><li class="depth-0"><a href="#then-do-this" data-for="then-do-this">Then do this</a></li><li class="depth-0"><a href="#how-to-generate-pat" data-for="how-to-generate-pat">How to Generate PAT</a></li><li class="depth-0"><a href="#what-to-select-here" data-for="what-to-select-here">What to select here</a></li><li class="depth-0"><a href="#now-scroll-down-and-click" data-for="now-scroll-down-and-click">Now scroll down and click:</a></li><li class="depth-0"><a href="#very-important-step-dont-miss-this" data-for="very-important-step-dont-miss-this">VERY IMPORTANT STEP (Don’t miss this)</a></li><li class="depth-0"><a href="#now-go-to-your-phone" data-for="now-go-to-your-phone">Now go to your phone</a></li><li class="depth-2"><a href="#username-1" data-for="username-1">Username:</a></li><li class="depth-2"><a href="#password--personal-access-token" data-for="password--personal-access-token">Password / Personal Access Token:</a></li><li class="depth-0"><a href="#after-restart-try-this-inside-mobile-obsidian" data-for="after-restart-try-this-inside-mobile-obsidian">After restart, try this inside mobile Obsidian:</a></li><li class="depth-0"><a href="#question-i-used-pull-but-it-showed-cant-find-a-repository-create-one-using-the-command" data-for="question-i-used-pull-but-it-showed-cant-find-a-repository-create-one-using-the-command">Question: I used pull but it showed “Can’t find a repository create one using the command”</a></li><li class="depth-0"><a href="#-why-this-happened" data-for="-why-this-happened">🔴 Why this happened</a></li><li class="depth-0"><a href="#why-this-works" data-for="why-this-works">Why this works</a></li><li class="depth-0"><a href="#easiest-method" data-for="easiest-method">EASIEST METHOD</a></li><li class="depth-1"><a href="#step-1--on-laptop" data-for="step-1--on-laptop">Step 1 — On laptop</a></li><li class="depth-1"><a href="#step-2--send-to-phone" data-for="step-2--send-to-phone">Step 2 — Send to phone</a></li><li class="depth-1"><a href="#step-3--open-in-obsidian-mobile" data-for="step-3--open-in-obsidian-mobile">Step 3 — Open in Obsidian mobile</a></li><li class="depth-1"><a href="#step-4--enter-credentials" data-for="step-4--enter-credentials">Step 4 — Enter credentials</a></li><li class="depth-1"><a href="#step-5--test-sync" data-for="step-5--test-sync">Step 5 — Test sync</a></li><li class="depth-0"><a href="#very-important-warning-️" data-for="very-important-warning-️">VERY IMPORTANT WARNING ⚠️</a></li><li class="depth-2"><a href="#in-windows" data-for="in-windows">In Windows:</a></li><li class="depth-0"><a href="#how-to-set-author-name-for-commit" data-for="how-to-set-author-name-for-commit">How to set Author name for Commit?</a></li><li class="depth-0"><a href="#what-to-enter-in-each-field" data-for="what-to-enter-in-each-field">What to enter in each field</a></li><li class="depth-2"><a href="#username-on-your-git-server" data-for="username-on-your-git-server">Username on your git server</a></li><li class="depth-2"><a href="#password--personal-access-token-1" data-for="password--personal-access-token-1">Password / Personal access token</a></li><li class="depth-2"><a href="#author-name-for-commit" data-for="author-name-for-commit">Author name for commit</a></li><li class="depth-2"><a href="#author-email-for-commit" data-for="author-email-for-commit">Author email for commit</a></li><li class="depth-0"><a href="#why-keeping-same-nameemail-is-important" data-for="why-keeping-same-nameemail-is-important">Why keeping same name/email is important</a></li><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>
