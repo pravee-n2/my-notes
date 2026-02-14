@@ -16,5 +16,7 @@ git push
 
 echo.
 echo Done! Site will update in about 1 minute.
+
 echo.
-set /p =Press Enter to close...
+set /p dummy=Press Enter to close...
+

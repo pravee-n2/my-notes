@@ -6,65 +6,65 @@
       <description>Last 10 notes on Digital Garden</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>10 Commands to execute when files are updated in content folder</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/10-Commands-to-execute-when-files-are-updated-in-content-folder</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/10-Commands-to-execute-when-files-are-updated-in-content-folder</guid>
-    <description><![CDATA[ Whenever you update anything inside: quartz-site/content/ ✅ Standard Update Workflow (Every Time) 1️⃣ Build the site npx quartz build --output docs This converts your Markdown into the website inside /docs. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 04:37:56 GMT</pubDate>
+    <title>12 Important - Folder Visibility in Quartz (index.md Rule)</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/12-Important---Folder-Visibility-in-Quartz-(index.md-Rule)</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/12-Important---Folder-Visibility-in-Quartz-(index.md-Rule)</guid>
+    <description><![CDATA[ 🚨 Key Learning Quartz does NOT treat folders like Windows Explorer. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 05:08:03 GMT</pubDate>
   </item><item>
-    <title>09 Quartz setup - Full Discussion</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/09-Quartz-setup---Full-Discussion</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/09-Quartz-setup---Full-Discussion</guid>
-    <description><![CDATA[ 🧭 Overall Architecture Obsidian Notes (Markdown files) ↓ Git Commit + Push ↓ GitHub Repository ↓ GitHub Pages (auto builds site) ↓ Public website URL ↓ Google indexes it 🚀 Step-by-Step Setup (Best Method) 1️⃣ Create a GitHub Repository Go to: github.com Click New Repository Name it: my-notes Set: ... ]]></description>
-    <pubDate>Sat, 14 Feb 2026 04:31:00 GMT</pubDate>
-  </item><item>
-    <title>08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)</guid>
-    <description><![CDATA[ This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 03:39:18 GMT</pubDate>
-  </item><item>
-    <title>07 Fixing Obsidian Git Sync Errors (Merge Conflicts, Pull, Push Issues &amp; Multi-Device Setup Guide)</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/07-Fixing-Obsidian-Git-Sync-Errors-(Merge-Conflicts,-Pull,-Push-Issues--and--Multi-Device-Setup-Guide)</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/07-Fixing-Obsidian-Git-Sync-Errors-(Merge-Conflicts,-Pull,-Push-Issues--and--Multi-Device-Setup-Guide)</guid>
-    <description><![CDATA[ If you use Obsidian with Git across multiple devices (home laptop, office laptop, mobile), you will eventually run into confusing errors like: “Conflicts detected” “Your local changes would be overwritten” “Updates were rejected (fetch first)” Files showing &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD and &gt;... ]]></description>
-    <pubDate>Sat, 14 Feb 2026 03:32:09 GMT</pubDate>
-  </item><item>
-    <title>03 Setup on SECOND laptop</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/03-Setup-on-SECOND-laptop</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/03-Setup-on-SECOND-laptop</guid>
-    <description><![CDATA[ In second laptop: Install Git Install Obsidian Open terminal in the folder where you want vault Run: git clone github.com/(github_username)/Obsidian_Vault.git Then open that folder in Obsidian. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 03:25:38 GMT</pubDate>
-  </item><item>
-    <title>06 Commit and Sync + Pull Workflow</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/06-Commit-and-Sync-+-Pull-Workflow</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/06-Commit-and-Sync-+-Pull-Workflow</guid>
-    <description><![CDATA[ You DON’T have to manually press anything most of the time if you have enabled auto commit and sync. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 03:22:09 GMT</pubDate>
-  </item><item>
-    <title>05 How to setup in Mobile Device</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device</guid>
-    <description><![CDATA[ Step 1 — Install apps From Play Store install: Obsidian Termux (optional but helpful) Step 2 — Download your vault from GitHub We need the vault folder on phone. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 03:15:33 GMT</pubDate>
-  </item><item>
-    <title>04 ERROR - “Git is not ready. When all settings are correct you can configure commit-sync”</title>
-    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/04-ERROR---%E2%80%9CGit-is-not-ready.-When-all-settings-are-correct-you-can-configure-commit-sync%E2%80%9D</link>
-    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/04-ERROR---%E2%80%9CGit-is-not-ready.-When-all-settings-are-correct-you-can-configure-commit-sync%E2%80%9D</guid>
-    <description><![CDATA[ Initial steps: Open GIT folder and then double click on the bin folder. ]]></description>
-    <pubDate>Sat, 14 Feb 2026 03:02:33 GMT</pubDate>
+    <title>index</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/</guid>
+    <description><![CDATA[ GIT Setup for Obsidian All notes related to Git setup and Quartz publishing. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 05:03:45 GMT</pubDate>
   </item><item>
     <title>01 How to setup GIT in Desktop.</title>
     <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/01-How-to-setup-GIT-in-Desktop.</link>
     <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/01-How-to-setup-GIT-in-Desktop.</guid>
     <description><![CDATA[ 🧭 Overall Idea (simple understanding) Your vault will live in 3 places: Laptop 1 ←→ GitHub Repo ←→ Laptop 2 ←→ Android (later) You will: Push = send notes to GitHub Pull = download latest notes 🪜 STEP 1 — Create a GitHub repository Go to: github.com Create account (if not already) Click: New Repos... ]]></description>
-    <pubDate>Fri, 13 Feb 2026 18:48:41 GMT</pubDate>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
   </item><item>
     <title>02 How to upload your existing vault to Github</title>
     <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/02-How-to-upload-your-existing-vault-to-Github</link>
     <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/02-How-to-upload-your-existing-vault-to-Github</guid>
     <description><![CDATA[ 📍 STEP 1 — Open terminal inside your vault folder Go to your Obsidian vault location. ]]></description>
-    <pubDate>Fri, 13 Feb 2026 18:46:01 GMT</pubDate>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
+  </item><item>
+    <title>03 Setup on SECOND laptop</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/03-Setup-on-SECOND-laptop</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/03-Setup-on-SECOND-laptop</guid>
+    <description><![CDATA[ In second laptop: Install Git Install Obsidian Open terminal in the folder where you want vault Run: git clone github.com/(github_username)/Obsidian_Vault.git Then open that folder in Obsidian. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
+  </item><item>
+    <title>04 ERROR - “Git is not ready. When all settings are correct you can configure commit-sync”</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/04-ERROR---%E2%80%9CGit-is-not-ready.-When-all-settings-are-correct-you-can-configure-commit-sync%E2%80%9D</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/04-ERROR---%E2%80%9CGit-is-not-ready.-When-all-settings-are-correct-you-can-configure-commit-sync%E2%80%9D</guid>
+    <description><![CDATA[ Initial steps: Open GIT folder and then double click on the bin folder. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
+  </item><item>
+    <title>05 How to setup in Mobile Device</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/05-How-to-setup-in-Mobile-Device</guid>
+    <description><![CDATA[ Step 1 — Install apps From Play Store install: Obsidian Termux (optional but helpful) Step 2 — Download your vault from GitHub We need the vault folder on phone. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
+  </item><item>
+    <title>06 Commit and Sync + Pull Workflow</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/06-Commit-and-Sync-+-Pull-Workflow</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/06-Commit-and-Sync-+-Pull-Workflow</guid>
+    <description><![CDATA[ You DON’T have to manually press anything most of the time if you have enabled auto commit and sync. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
+  </item><item>
+    <title>07 Fixing Obsidian Git Sync Errors (Merge Conflicts, Pull, Push Issues &amp; Multi-Device Setup Guide)</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/07-Fixing-Obsidian-Git-Sync-Errors-(Merge-Conflicts,-Pull,-Push-Issues--and--Multi-Device-Setup-Guide)</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/07-Fixing-Obsidian-Git-Sync-Errors-(Merge-Conflicts,-Pull,-Push-Issues--and--Multi-Device-Setup-Guide)</guid>
+    <description><![CDATA[ If you use Obsidian with Git across multiple devices (home laptop, office laptop, mobile), you will eventually run into confusing errors like: “Conflicts detected” “Your local changes would be overwritten” “Updates were rejected (fetch first)” Files showing &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD and &gt;... ]]></description>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
+  </item><item>
+    <title>08 Quartz Startup Guide = From Obsidian Notes to a Fully Published Website (Step-by-Step + Real Mistakes &amp; Fixes)</title>
+    <link>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)</link>
+    <guid>https://pravee-n2.github.io/my-notes/GIT-setup-for-Obsidian/08-Quartz-Startup-Guide-=-From-Obsidian-Notes-to-a-Fully-Published-Website-(Step-by-Step-+-Real-Mistakes--and--Fixes)</guid>
+    <description><![CDATA[ This is a complete beginner-to-advanced setup guide for turning your Obsidian notes into a public website using Quartz + GitHub Pages. ]]></description>
+    <pubDate>Sat, 14 Feb 2026 04:48:06 GMT</pubDate>
   </item>
     </channel>
   </rss>

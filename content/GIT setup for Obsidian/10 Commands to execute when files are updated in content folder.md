@@ -52,7 +52,7 @@ git push
 
 ---
 
-## 🔁 That’s it.
+### 🔁 That’s it.
 
 After pushing:
 
@@ -132,7 +132,9 @@ git push
 
 echo.
 echo Done! Site will update in about 1 minute.
-pause
+
+echo.
+set /p =Press Enter to close...
 ```
 
 Save the file.
